@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>JoelAustin.net</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="Scripts/typed.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2|Fjalla+One" rel="stylesheet">
+    <link href="Styles/StyleSheet.css" rel="stylesheet" />
+    <script src="Scripts/RenderParts.js"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div id="alternateNavDiv"></div>
+        <div class="jumbotron-fluid">
+            <h1 id="typewriter"></h1>
+        </div>
+        <div class="content">
+            <h2>
+                If you would like to contact me directly, I am always available at my University of Pittsburgh Email address.
+            </h2>
+            <h1>
+                <script type="text/javascript">
+                    var user = "Jta26";
+                    var domain = "Pitt.edu";
+                    var link = user + "@" + domain;
+                    document.write(link);
+                </script>   
+
+            </h1>
+
+
+        </div>
+    </div>
+    <div id="footerDiv"></div>
+</body>
+</html>
+<script>
+        $(function () {
+            $("#typewriter").typed({
+                strings: ["Contact Me"],
+                typeSpeed: 80
+            });
+        });
+</script>
