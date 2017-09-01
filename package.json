@@ -1,0 +1,19 @@
+{
+  "name": "clubstack-server",
+  "version": "1.0.0",
+  "description": "A Server to handle AJAX requests for authentication of users",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joel Austin",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.1",
+    "nodemailer": "^4.0.1",
+    "request": "^2.81.0"
+  }
+}
