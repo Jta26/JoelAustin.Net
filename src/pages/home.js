@@ -89,9 +89,9 @@ class Home extends Component {
 
                         <Grid columns={3} stackable divided>
                             <Grid.Row>
-                                {this.state.images.map((img) => {
+                                {this.state.images.map((img, i) => {
                                 return (
-                                    <Grid.Column>
+                                    <Grid.Column key={i}>
                                         <Grid columns={2}>
                                             <Grid.Row centered>
                                                 <Grid.Column mobile={5}>

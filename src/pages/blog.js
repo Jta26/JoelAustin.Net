@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Fade from 'react-reveal';
 import LightBox from 'react-images';
+import Img from 'react-images';
 import parse from 'html-react-parser';
+import {Image} from 'semantic-ui-react';
 import history from '../history';
 import '../css/blog.css';
 import Header from '../components/Header';
@@ -38,7 +40,7 @@ class Blog extends Component {
     }
     componentDidMount() {
         this.storeData()
-
+        window.scrollTo(0,0);
     }
     openLightbox(index) {
         this.setState({
@@ -77,14 +79,15 @@ class Blog extends Component {
                     </div>
                     <div className='blog-content'>
                     {
-                        this.props.location.state.paragraphs.map(paragraph => {
+                        this.props.location.state.paragraphs.map((paragraph, i) => {
                         
-                            return <p className='paragraph'>{parse(paragraph)}</p>
+                            return <div key={i}><p className='paragraph'>{parse(paragraph)}</p></div>
                         })
                     }
                      <div className='blog-content-imgs'>
                         {this.props.location.state.images.map((img, i) => {
-                            return <img src={img.src} onClick={this.openLightbox.bind(this, i)}/>                     
+                            console.log(img.src);
+                            return <Image src={img.src} key={i} onClick={this.openLightbox.bind(this, i)}/>                     
                             })
                         }
                      </div>

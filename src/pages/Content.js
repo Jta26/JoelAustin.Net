@@ -40,9 +40,9 @@ class Content extends Component {
             <div className='blogs-container'>
                 <Header/>
                 <div className='blogs-wrapper'>
-                    {this.state.content.map((item) => {
+                    {this.state.content.map((item, i) => {
                         return(
-                            <div>
+                            <div key={i}>
                             <Fade bottom>
                             <BlogItem
                                 title={item.title}
