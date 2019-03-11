@@ -1,0 +1,107 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .typed {
+    font-size: 10vmin;
+    margin-left: 12vmin;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 80vh;
+}
+.container .top {
+
+    background-color: #2980b9;
+}
+.container .scrollto {
+    text-align: center;
+    height: 10vh;
+    -webkit-animation: flickerAnimation 2.5s infinite;
+    -moz-animation: flickerAnimation 2.5s infinite;
+    -o-animation: flickerAnimation 2.5s infinite;
+     animation: flickerAnimation 2.5s infinite;
+}
+.scrollto p {
+    font-size: 1.5em;   
+    color: white;
+}
+.scrollto img {
+       
+}
+.container .skills {
+    text-align: left;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    
+}
+.container .skills .image {
+    text-align: center;
+    margin: auto;
+}
+
+.skill-box {
+    
+}
+.skill {
+
+}
+
+
+
+.about-wrapper {
+    background-color: #2980b9;
+}
+
+.about-wrapper {
+    padding: 190px 100px 190px 100px;
+}
+.prof-img {
+
+}
+.prof-img img {
+    
+}
+.prof-img-wrapper {
+
+}
+.abt-text {
+    color: white;
+}
+
+@keyframes flickerAnimation {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-o-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-moz-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  @-webkit-keyframes flickerAnimation{
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+
+  @media(max-width: 768px) {
+    .skills .grid .grid {
+        width: 100%;
+    }
+    .about-wrapper{
+        width: 100%;
+        padding: 20px;
+    }
+    .about-wrapper h1 {
+        font-size: 5.5vmin;
+    }
+  }

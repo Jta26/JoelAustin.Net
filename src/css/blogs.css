@@ -1,0 +1,26 @@
+.blogs-container {
+    background-color: #2980b9;
+    
+    
+}
+.blogs-wrapper {
+    width: 85%;
+    margin: 50px auto 0 auto;
+    background-color: #2980b9;
+    display: flex;
+    justify-content: center;
+    
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+.phantom {
+    visibility: hidden;
+  
+}
+@media (max-width: 768px) {
+    .blogs-wrapper {
+        width: 100%;
+    }
+}
+
+

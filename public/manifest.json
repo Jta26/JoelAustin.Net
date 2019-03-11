@@ -1,0 +1,10 @@
+{
+  "short_name": "JoelAustin.Net",
+  "name": "Joel Austin.Net Website",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

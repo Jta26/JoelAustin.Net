@@ -1,0 +1,94 @@
+[
+    {
+        "title": "Firebase Began, REST API calls Python Processor",
+        "date": "Mar 6 2019",
+        "week":7,
+        "paragraphs":[
+            "For this week, I began developing the front end using create-react-app. This tool handles all the creation of bundlers that make it extremely simple to get an application that uses react up and running. It handles all bundling with regards to Webpack, which is a tool that compiles JavaScript into a browser readable format. There is also Babel, which compiles what’s called JSX into html. JSX is html that is written in-line with JavaScript, and allows the developer to pre-compile any information into specfic spots, before it is given to the DOM. \n At this time, I am working with the design of the website. I want to make something that utlilizes a flat user interface, while still looking professional and sleek. Design is always a tough area, as it’s difficult to pick colors and have decent UX. I guess that’s why UX designers salaries are so high."
+        ],
+        "images": [
+            {"src": "https://i.imgur.com/JmRH8A7.png", "width": 1, "height":1},
+            { "src": "https://i.imgur.com/P37WbmI.png",  "width": 1, "height":1}
+        ]
+    },
+    {
+        "title": "Web Front End Development",
+        "date": "Feb 27 2019",
+        "week":6,
+        "paragraphs":[
+            "For this week, I began developing the front end using create-react-app. This tool handles all the creation of bundlers that make it extremely simple to get an application that uses react up and running. It handles all bundling with regards to Webpack, which is a tool that compiles JavaScript into a browser readable format. There is also Babel, which compiles what’s called JSX into html. JSX is html that is written in-line with JavaScript, and allows the developer to pre-compile any information into specfic spots, before it is given to the DOM. \n At this time, I am working with the design of the website. I want to make something that utlilizes a flat user interface, while still looking professional and sleek. Design is always a tough area, as it’s difficult to pick colors and have decent UX. I guess that’s why UX designers salaries are so high."
+        ],
+        "images": [
+            {"src": "https://i.imgur.com/YvoJ4Nq.png", "width": 1, "height":1},
+            {"src": "https://i.imgur.com/P37WbmI.png",  "width": 1, "height":1}
+        ]
+    },
+    {
+        "title": "Google Assistant Working",
+        "date": "Feb 22 2019",
+        "week": "5",
+        "paragraphs": [
+            "This week, I finished getting the Google Assistant working with my Restful API. Currently, If someone posts to “api.joelaustin.net/google” with a response in Dialogflow formatting that contains a date and a menutype for parameters, they will receive back a SSML speech response that reads the menu aloud. This is done as my fulfillment for my “Get Menu” action in “Actions on Google”."
+        ],
+        "images": [
+            {"src": "https://www.androidpolice.com/wp-content/uploads/2016/10/nexus2cee_image-1.png", "width": 1, "height":1},
+            {"src":  "https://i.imgur.com/f7eL0sN.png",  "width": 1, "height":1}
+        ]
+    },
+    {
+        "title": "HTTPS on Restful API, Google Stuffs",
+        "date": "Feb 8 2019",
+        "week": "4",
+        "paragraphs": [
+            "For week 4, I span up a new AWS instance to use for my Restful API that facilitates the transfer of data between end clients and the backend database. I also explored the feasibility of getting the Google assistant to read out menus for specified dates. This is why I immediately setup HTTPS on then new server. Google Dialogflow, which is Google’s service for creating assistant actions, has a feature called “Dialogflow Fulfillment” and has an open source library that is used to create “fulfillment services”. I used this library to create a Webhook that returns a Javascript Promise with the information that is required. The promise also returns a SSML string. SSML stands for Synthesized Speech Markup Language, and is used to process things that make speech more natural like pauses and acronym readings."
+        ],
+        "images": [
+            {"src": "https://www.gstatic.com/devrel-devsite/v0c5955d059aba786c5f2d09da2bfbe42bacdee18d42deaad3e06cc3eb2931920/dialogflow/images/lockup.svg?dcb_=0.7683600014506741", "width": 1, "height":1},
+            {"src": "https://i.imgur.com/CpAhV80.png",  "width": 1, "height":1}
+        ]
+    },
+    {
+        "title": "Python Script Improved, Node.js RESTful API Created",
+        "date": "Jan 30 2019",
+        "week": "3",
+        "paragraphs": [
+            "For week 3, I worked on debugging the python script I wrote last week, as well as beginning the NPM project for the Node.js REST API that will be responsible for serving the SQL data of the menus. The client will access the data through a url such a joelaustin.net/menu/2019-02-23?type=0. This url would indicate that the user wants the menu from the date specficied as a GET request to a directory, and has a query string that contains the type of the menu, 1 or 0, correlating to lunch or dinner. \n My python script had a few bugs that involved dates and a change in month. The script was incorrectly setup to not handle months that were 31 days long. This issue has now been fixed. I also improved logging on the python script so now it looks very presentable."
+        ],
+        "images": [
+            {"src":  "https://cdn-images-1.medium.com/max/1600/1*d2zLEjERsrs1Rzk_95QU9A.png", "width": 1, "height":1},
+            {"src": "https://i.imgur.com/wabLTaV.png", "width": 1, "height":1},
+            {"src": "https://i.imgur.com/u9EP3qZ.png", "width": 1, "height":1}
+            
+        ]
+    },
+    {
+        "title": "Database and Python Script Created",
+        "date": "Jan 19 2019",
+        "week": "2",
+        "paragraphs": [
+            "This week I developed a Python script that downloads, reads, and parses the .pdf files found at any given location. The script uses BeautifulSoup, Pandas, Numpy, and a vareity of other packages. The pdf file locations are discovered using a regular expression that finds .pdf urls in html. Those urls are then downloaded directly and saved to a directory. A package called Tabula pareses the downloaded PDF files for tables and converts them into dataframes that are readable by Pandas. The dataframes are then seperated into columns of data. The columns are searched for a readable date such as “12-Jan” and that is converted to a Python datetime readable format.\n The columns that contain the menu items are then organized by date and sent to a seperate method that uploads them to a MySql Database. The MySql database is hosted on AWS RDS and is designed in Third Normal Form. Below there is an Entity Relationship Diagram, as well as a Logical Model of the Database.    "
+        ],
+        "images": [
+            { "src":"https://i.imgur.com/ZJtIoS2.png", "width": 1, "height":1},
+                { "src":"https://i.imgur.com/Oql4TTv.png", "width": 1, "height":1},
+            { "src": "https://i.imgur.com/chPYKbf.png", "width": 1, "height":1},
+            { "src": "https://i.imgur.com/ItVio5v.png",  "width": 1, "height":1},
+            {"src": "https://i.ibb.co/bFL3M0j/Screenshot-from-2019-01-20-16-53-48.png", "width": 1, "height":1}
+            
+        ]
+    },
+    {
+        "title": "Capstone Blog Creation",
+        "date": "Jan 11 2019",
+        "week": "1",
+        "paragraphs": [
+            "Today I created this single page blog. In total it took about 10 hours to create, an utlizes Next.js and React to an interactive webpage without the need to make multiple requests to a server hosted on an AWS instance running Ubuntu 18.04.  React is a javascript front-end framework used to make creating interactive content online simple and modular. The blog selection bar, and blog content is pulled from a JSON file on the server, that is to be manually updated when I make a new blog post. The choice to program my own blog instead of using a service like wordpress is to exmplify my front-end development ability. My capstone project is going to involve all facets of full-stack development, including data retrieve and organization scripts, databases, RESTful API back-end technologies, and front-end development frameworks such as React.\nAll images in this blog will be at the bottom of the blog post. They are all clickable such that they can be viewed in a lightbox. The blogs will be added on the left side of the page as I progress through my capstone project. This website is not made to be mobile-oreiented."
+        ],
+        "images": [
+            { "src": "https://i.imgur.com/gTvLu4t.png", "width": 2, "height": 1 },
+            { "src": "https://i.imgur.com/U4QZeGh.png", "width": 1.5, "height": 1 },
+            { "src": "https://i.imgur.com/GqV2Vh5.png", "width": 2, "height": 1 }                
+        ]
+    }
+        
+]

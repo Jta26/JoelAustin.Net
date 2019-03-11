@@ -1,0 +1,101 @@
+body, html {
+    height: 100%;
+  }
+.blog-container {
+    background-color: #2980b9;
+    min-height: 100vh;
+}
+.blog-wrapper {
+    width: 70%;
+    margin: 40px auto 0 auto;
+    background-color: #FFF;
+}
+.blog-header {
+    height: 30vh;
+    position: relative;
+    overflow: hidden;
+}
+.blog-header-bkrnd {
+    background-image: url('../img/headerimg.png');
+    height: 100%;
+    margin: -10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    z-index: 0;
+    filter: blur(3px);
+    overflow: hidden;
+}
+.blog-header-content {
+    color: white;
+    text-shadow: 1px 1px 10px black;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+.blog-header-content h1 {
+    font-size: 6vmin;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.blog-header-content h2 {
+    font-size: 2.5vmin;
+    text-align: center;
+    font-weight: bold;
+}
+.blog-content .paragraph {
+    font-size: 2.5vmin;
+    margin-top: 30px;
+    padding: 20px;
+}
+.blog-content .paragraph div:first-child {
+    font-weight: bold;
+    margin-top: 10px;
+}
+.blog-content-imgs {
+    display: flex;
+    justify-content: left;
+    
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+.blog-content-imgs img {
+    width: 300px;
+    height: 100%;
+    margin: 20px;
+    border: 1px solid black;
+    transition: all .2s ease-in-out;
+}
+.blog-content-imgs img:hover {
+    text-decoration: underline;
+    box-shadow: 0px 0px 20px 0px black;
+}
+@media (max-width: 768px ) {
+    .blog-header-content h1 {
+        font-size: 7.5vmin;
+
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .blog-header-content h2 {
+        font-size: 5vmin;
+    }
+    .blog-wrapper {
+        width: 100%;
+        margin-top: 0;
+    }
+    .blog-wrapper .paragraph {
+        font-size: 6vmin;
+    }
+    .blog-content-imgs img {
+        max-width: 300px;
+        max-height: 100%;
+    }
+}
