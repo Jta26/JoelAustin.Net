@@ -88,7 +88,7 @@ class Blog extends Component {
                             })
                         }
                      </div>
-                     <LightBox images={this.state.images}
+                     <LightBox images={this.props.location.state.images}
                             onClose={this.closeLightbox}
                             onClickPrev={this.goToPrevious}
                             onClickNext={this.goToNext}
