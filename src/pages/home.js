@@ -127,7 +127,7 @@ class Home extends Component {
                                     </Grid.Column>
                                     <Grid.Column computer={9} mobile={16} >
                                         <div className='abt-text'>
-                                            <h1>I am currently a student at the University of Pittsburgh who also works remotely for IPC Systems Inc, a mid-size company headquartered the Jersey City and Manhattan Area. At IPC Systems, I contribute towards a large Javascript desktop and mobile application. My hobbies (besides coding) include cooking and the occasional playing of the guitar.</h1>
+                                            <h1>I am currently a student at the University of Pittsburgh who also works remotely for IPC Systems Inc, a mid-size company headquartered in the Jersey City and Manhattan Area. At IPC Systems, I contribute towards a large Javascript desktop and mobile application. My hobbies (besides coding) include cooking and playing of the guitar.</h1>
                                         </div>
                                     </Grid.Column>
                                 </Grid.Row>
