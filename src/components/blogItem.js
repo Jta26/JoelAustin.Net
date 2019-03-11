@@ -21,7 +21,7 @@ class BlogItem extends Component {
                 paragraphs: this.props.paragraphs,
                 images: this.props.images
             }
-          })
+          });
     }
     componentDidMount() {
         
