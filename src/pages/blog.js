@@ -42,6 +42,7 @@ class Blog extends Component {
         this.storeData()
         window.scrollTo(0,0);
     }
+
     openLightbox(index) {
         this.setState({
             currentImage: index,
@@ -86,7 +87,7 @@ class Blog extends Component {
                     }
                      <div className='blog-content-imgs'>
                         {this.props.location.state.images.map((img, i) => {
-                            console.log(img.src);
+                         
                             return <Image src={img.src} key={i} onClick={this.openLightbox.bind(this, i)}/>                     
                             })
                         }
