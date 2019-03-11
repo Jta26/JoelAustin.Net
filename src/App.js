@@ -13,15 +13,12 @@ import Blog from './pages/blog';
 
 
 class App extends Component {
-  initializeReactGA() {
-    console.log('GA initialized');
-    ReactGA.initialize('UA-136074176-1');
-    ReactGA.pageview('/homepage');
-  }
   componentDidMount() {
-    
-    this.initializeReactGA();
+    ReactGA.pageview('/homepage');
     history.listen(location => ReactGA.pageview(location.pathname));
+  }
+  componentDidUpdate() {
+    ReactGA.pageview('/homepage');
   }
   render() {
     return (
