@@ -23,43 +23,14 @@ class Home extends Component {
                 [pyimg, 'Excellent Python skills using packages such as Numpy, Pandas, BeautifulSoup, and Flask.']],
             skillScroll: false,
             abtimghidden: false,
-            timeout: '',
-            scrolling: false
+
         }
-        this.skills = null;
-        this.handleScroll = this.handleScroll.bind(this);
-    }
-    handleScroll() {
-        console.log('SCROLLING:' + this.state.scrolling)
-        if (this.state.scrolling == false) {
-            var scrollDir = this.oldScroll > window.scrollY
-            console.log(scrollDir, window.scrollY, this.oldScroll);
-            if (!scrollDir && window.scrollY < 400) {
-                this.setState({scrolling: true})
-                window.scrollTo({
-                    top: this.skills.offsetTop,
-                    left: 0,
-                    behavior: 'smooth'
-                })
-                
-            }
-            
-            setTimeout(() => {
-                this.setState({scrolling: false});
-            }, 1000)
-            this.oldScroll = window.scrollY;
-        }
-        
-            
-        
-        
     }
     componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
+
     }
     componentWillUnmount() {
-        console.log('Removing Handle Scroll Event Listener');
-        window.removeEventListener('scroll', this.handleScroll);
+
     }
     render() {
         return(
@@ -77,15 +48,17 @@ class Home extends Component {
                         backspeed={50}
                     />
                     </div>
-                    <div className='scrollto' onClick={() =>  this.skills.scrollIntoView({block: 'start', behavior: 'smooth'})}>
+                    <div className='scrollto'>
+                        <a href='#about'>
                         <Fade>
                             <p>Scroll</p>
                             <Image src={arrow} size='mini' centered/>
                         </Fade>
+                        </a>
                     </div>
                 </div>
                 <Fade bottom>
-                    <div className='skills'  id='about' ref={skills => this.skills = skills}>
+                    <div className='skills'  id='about'>
 
                         <Grid columns={3} stackable divided>
                             <Grid.Row>

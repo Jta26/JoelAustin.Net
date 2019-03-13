@@ -4,22 +4,28 @@
     display: flex;
     justify-content: space-between;  
     background-color: white;
+    align-items: center;
+    height: 5vh;
+    border-bottom: .1em solid black;
+    
+    z-index: 0;
 }
 .nav-wrapper {
-   
+    
 }
 .nav-large {
     display: flex;
     flex-direction: row;
-    height: 10vh;
+    
     align-items: center;
     text-align: center;
-    font-size: 4vmin
+    
 }
 .nav-item {
-    margin: 0 20px 0 20px;
+    margin: 0 1em 0 1em;
     color: black;
     display: block;
+    font-size: 1.5em;
 }
 .nav-item:hover {
     color: #2980b9;
@@ -30,8 +36,9 @@
     text-align: right;
 }
 .social-wrapper img {
-    margin: 10px;
-    width: 75px;
+    margin: 20px 20px 20px 0;
+    max-width: 2em;
+    max-height: 2em;
     
 }
 
@@ -47,6 +54,6 @@
         visibility: unset;
     }
     .social-wrapper img {
-        width: 10vw;
+       
     }
 }

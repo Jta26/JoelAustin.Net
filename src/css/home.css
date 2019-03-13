@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    scroll-behavior: smooth;
 }
 
 .container .typed {
@@ -10,21 +11,21 @@
     color: white;
     display: flex;
     align-items: center;
-    height: 80vh;
+    height: 85vh;
+    width: 100vw;
     pointer-events: none;
 }
 .container .top {
 
-    background-color: #2980b9;
+    background-color: #52a4d8;
 }
 .container .scrollto {
     text-align: center;
-    height: 10vh;
+    height: 12vh;
     -webkit-animation: flickerAnimation 2.5s infinite;
     -moz-animation: flickerAnimation 2.5s infinite;
     -o-animation: flickerAnimation 2.5s infinite;
      animation: flickerAnimation 2.5s infinite;
-     
 }
 .scrollto p {
     font-size: 1.5em;   
@@ -34,10 +35,12 @@
        
 }
 .container .skills {
+    background-color: white;
     text-align: left;
     padding-top: 100px;
     padding-bottom: 100px;
     pointer-events: none;
+    scroll-behavior: smooth;
     
 }
 .container .skills .image {
@@ -55,7 +58,7 @@
 
 
 .about-wrapper {
-    background-color: #2980b9;
+    background-color: #52a4d8;
     pointer-events: none;
 }
 
@@ -97,14 +100,18 @@
   }
 
   @media(max-width: 768px) {
+    .container .skills {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
     .skills .grid .grid {
-        width: 100%;
+        
     }
     .about-wrapper{
-        width: 100%;
-        padding: 20px;
+        
+      
     }
     .about-wrapper h1 {
-        font-size: 5.5vmin;
+        
     }
   }

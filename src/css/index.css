@@ -1,10 +1,14 @@
+html {
+  scroll-behavior: smooth;
+  background-color :#52a4d8;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: 'Lato', 'Open Sans', 'helvetica', 'sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  scroll-behavior: smooth;
 }
 
 code {
