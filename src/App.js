@@ -14,11 +14,11 @@ import Blog from './pages/blog';
 
 class App extends Component {
   componentDidMount() {
-    ReactGA.pageview('/homepage');
+    ReactGA.pageview('/');
     history.listen(location => ReactGA.pageview(location.pathname));
   }
   componentDidUpdate() {
-    ReactGA.pageview('/homepage');
+    ReactGA.pageview('s');
   }
   render() {
     return (

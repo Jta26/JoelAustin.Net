@@ -4,11 +4,13 @@ body, html {
 .blog-container {
     background-color: #2980b9;
     min-height: 100vh;
+
 }
 .blog-wrapper {
     width: 70%;
     margin: 40px auto 0 auto;
     background-color: #FFF;
+    
 }
 .blog-header {
     height: 30vh;
@@ -39,6 +41,7 @@ body, html {
     width: 100%;
     padding: 20px;
     text-align: center;
+    pointer-events: none;
 }
 .blog-header-content h1 {
     font-size: 6vmin;
@@ -54,6 +57,7 @@ body, html {
     font-size: 2.5vmin;
     margin-top: 30px;
     padding: 20px;
+    pointer-events: none;
 }
 .blog-content .paragraph div:first-child {
     font-weight: bold;
@@ -76,6 +80,9 @@ body, html {
 .blog-content-imgs img:hover {
     
     box-shadow: 0px 0px 20px 0px black;
+}
+.blog-content .paragraph a {
+    pointer-events: all;
 }
 @media (max-width: 768px ) {
     .blog-header-content h1 {
