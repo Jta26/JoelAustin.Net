@@ -14,11 +14,9 @@ class Header extends Component {
     return (
       <div className='header-wrapper'>
         <div className='nav-wrapper'>
-          <div className='nav-large'>
               <Link to='/' className='nav-item'>Index</Link>
               <Link to='/blogs' className='nav-item'>Blog</Link>
               <Link to='/portfolio' className='nav-item'>Portfolio</Link>
-          </div>
           {/* <div className='nav-mobile'>
               <Link to='/' className='nav-mobile-item'>Index</Link>
               <Link to='/blogs' className='nav-mobile-item'>Blog</Link>

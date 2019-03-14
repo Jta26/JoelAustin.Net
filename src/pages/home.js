@@ -5,6 +5,7 @@ import Fade from 'react-reveal';
 import { Grid, Image, Divider, Container } from 'semantic-ui-react';
 
 import Header from '../components/Header';
+import ImgText from '../components/ImgText';
 
 import csharp from '../img/csharp.png';
 import jsimg from '../img/js.png';
@@ -58,54 +59,38 @@ class Home extends Component {
                     </div>
                 </div>
                 <Fade bottom>
-                    <div className='skills'  id='about'>
-
-                        <Grid columns={3} stackable divided>
-                            <Grid.Row>
-                                {this.state.images.map((img, i) => {
-                                return (
-                                    <Grid.Column key={i}>
-                                        <Grid columns={2}>
-                                            <Grid.Row centered>
-                                                <Grid.Column mobile={5}>
-                                                    <Image src={img[0]} size='small'/>
-                                                    
-                                                </Grid.Column>
-                                                <Grid.Column mobile={10}>
-                                                <h1>{img[1]}</h1> 
-                                                </Grid.Column>
-                                            </Grid.Row>
-                                        </Grid>
-
-                                    </Grid.Column>
-                                )
-                            })}
-                            </Grid.Row>
-                        </Grid>
-                    </div>
-                    <div  className='about-wrapper'>
-                            <Grid columns={2} stackable divided>
-                                <Grid.Row>
-                                    <Grid.Column computer={5} mobile={16} className='prof-img-wrapper'>
-                                        <div 
-                                            className='prof-img'
-                                        >
-                                            <Image src={profimg} size='medium' circular bordered hidden={this.state.abtimghidden} centered 
-                                            onMouseEnter={() => {this.setState({abtimghidden: !this.state.abtimghidden})}}
-                                            />
-                                            <Image src={profimg2} size='medium' circular bordered hidden={!this.state.abtimghidden} centered
-                                            
-                                            onMouseLeave={() => {this.setState({abtimghidden: !this.state.abtimghidden})}}/>
-                                        </div>
-                                    </Grid.Column>
-                                    <Grid.Column computer={9} mobile={16} >
-                                        <div className='abt-text'>
-                                            <h1>I am currently a student at the University of Pittsburgh who also works remotely for IPC Systems Inc, a mid-size company headquartered in the Jersey City and Manhattan Area. At IPC Systems, I contribute towards a large Javascript desktop and mobile application. My hobbies (besides coding) include cooking and playing of the guitar.</h1>
-                                        </div>
-                                    </Grid.Column>
-                                </Grid.Row>
-                            </Grid>
+                    {/* <div className='about' id='about'>
+                        <ImgText img={profimg} text='I am currently a student at the University of Pittsburgh who also works remotely for IPC Systems Inc, a mid-size company headquartered in the Jersey City and Manhattan Area. At IPC Systems, I contribute towards a large Javascript desktop and mobile application. My hobbies (besides coding) include cooking and playing of the guitar.'/>
+                    </div> */}
+                    <div className='about' id='about'>
+                            <div className='img-wrapper'>
+                                <img src={profimg}/>
+                            </div>
+                            <p>I am currently a student at the University of Pittsburgh who also works remotely for IPC Systems Inc, a mid-size company headquartered in the Jersey City and Manhattan Area. At IPC Systems, I contribute towards a large Javascript desktop and mobile application. My hobbies (besides coding) include cooking and playing of the guitar.</p>
                         </div>
+                    <div className='skills'  id='skills'>
+                        <div className='skill'>
+                            <div className='img-wrapper'>
+                                <img src={csharp}/>
+                            </div>
+                            <p>Knowledgeable in .NET applications including console, form, and ASP, and Xamarin.</p>
+                        </div>
+                        <div className='skill'>
+                            <div className='img-wrapper'>
+                                <img src={jsimg}/>
+                            </div>
+                            <p>Specialty in Javascript Apps. React, React-Native, Angular, as well as Node.js.</p>
+                        </div>
+                        <div className='skill'>
+                            <div className='img-wrapper'>
+                                <img src={pyimg}/>
+                            </div>
+                            <p>Excellent Python skills using packages such as Numpy, Pandas, BeautifulSoup, and Flask.</p>
+                        </div>
+                        {/* <ImgText img={csharp} text='Knowledgeable in .NET applications including console, form, and ASP, and Xamarin.'/>
+                        <ImgText img={jsimg} text=''/>
+                        <ImgText img={pyimg} text='Excellent Python skills using packages such as Numpy, Pandas, BeautifulSoup, and Flask.'/> */}
+                    </div>
                  
                 </Fade>    
                 
