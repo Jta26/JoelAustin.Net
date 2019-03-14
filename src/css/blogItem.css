@@ -9,7 +9,7 @@
 }
 .blog-item-wrapper:hover {
     text-decoration: underline;
-    box-shadow: 0px 0px 20px 0px black;
+    box-shadow: 0px 0px 5px 0px black;
 }
 .blog-item-content {
     margin: 10px;   

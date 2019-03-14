@@ -14,7 +14,7 @@
 .container .top {
     display: flex;
     flex-direction: column;
-    height: 95vh;
+    height: 90vh;
     background-color: #52a4d8;
 }
 .container .scrollto {
@@ -107,7 +107,7 @@
 
   @media(max-width: 768px) {
       .container .top {
-          height: 50vh;
+          height: 35vh;
       }
       .container .typed {
         
