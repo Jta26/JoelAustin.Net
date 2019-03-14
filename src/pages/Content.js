@@ -77,6 +77,16 @@ class Content extends Component {
 
                     />
                     </div>
+                                        <div className='phantom'>
+                    <BlogItem
+                    title={''}
+                    date={''}
+                    week={''}
+                    paragraphs={['']}
+                    images={['']}
+
+                    />
+                    </div>
 
                     
                 </div>

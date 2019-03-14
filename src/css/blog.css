@@ -54,7 +54,8 @@ body, html {
     font-weight: bold;
 }
 .blog-content .paragraph {
-    font-size: 2.5vmin;
+    font-size: calc(10px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
     margin-top: 30px;
     padding: 20px;
     pointer-events: none;
@@ -99,7 +100,8 @@ body, html {
         margin-top: 0;
     }
     .blog-wrapper .paragraph {
-        font-size: 6vmin;
+        font-size: calc(18px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+        line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
     }
     .blog-content-imgs img {
         max-width: 300px;

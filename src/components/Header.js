@@ -4,10 +4,16 @@ import '../css/header.css';
 import { Grid, Image, Divider, Container } from 'semantic-ui-react';
 
 import githubimg from '../img/github.svg';
+import githubwhite from '../img/githubwhite.png';
 import linkedinimg from '../img/linkedin.svg';
+import linkedinwhite from '../img/linkedinwhite.png';
 class Header extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      github: githubwhite,
+      linkedin: linkedinwhite
+    }
   }
 
   render() {
@@ -24,8 +30,19 @@ class Header extends Component {
           </div> */}
         </div>
         <div className='social-wrapper'>
-            <a href='http://github.com/jta26' target='_blank'><img src={githubimg} /></a>
-            <a href='https://www.linkedin.com/in/joel-austin/' target='_blank'><img src={linkedinimg}/></a>
+            <a href='http://github.com/jta26' target='_blank'>
+              <img 
+              src={this.state.github} 
+              onMouseEnter={() => {this.setState({github: githubimg})}}
+              onMouseLeave={() => {this.setState({github: githubwhite})}}/>
+            </a>
+            <a href='https://www.linkedin.com/in/joel-austin/' target='_blank'>
+              <img 
+              src={this.state.linkedin}
+              onMouseEnter={() => {this.setState({linkedin: linkedinimg})}}
+              onMouseLeave={() => {this.setState({linkedin: linkedinwhite})}}
+              />
+            </a>
             
 
         </div>

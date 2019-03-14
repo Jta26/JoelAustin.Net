@@ -34,7 +34,11 @@ class BlogItem extends Component {
                     <h1>{this.props.title}</h1>
                     <h2>{this.props.date}</h2>
                     <p>{this.props.paragraphs[0].length > 200 ? this.props.paragraphs[0].slice(0,190) + '...' : this.props.paragraphs}</p>
-                    <img src={this.props.images[0].src}/>
+                    <div className='img-wrapper'>
+                        <img src={this.props.images[0].src}/>
+                    </div>
+                    
+                  
                 </div>
 
             </div>

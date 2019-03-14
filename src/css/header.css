@@ -6,7 +6,7 @@
   
     align-items: center;
     height: 10vh;
-    border-bottom: .1em solid black;
+    background-color: #52a4d8;
     
     z-index: 0;
 }
@@ -17,7 +17,7 @@
 
 }
 .nav-item {
-    color: black;
+    color: white;
     display: block;
     margin: 10px;
     font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
@@ -25,7 +25,7 @@
     
 }
 .nav-item:hover {
-    color: #2980b9;
+    color: #000;
 }
 .social-wrapper {
     display: flex;
