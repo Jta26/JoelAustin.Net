@@ -1,5 +1,18 @@
 [
     {
+        "title": "Sign Up and Login Available",
+        "date": "Mar 20 2019",
+        "week":7,
+        "paragraphs":[
+            "Continuing in the development of my full-stack application, I have created the front-end login and sign up systems for the app using Firebase. I am actually able to create a login system on my own where user data is stored in a SQL or MongoDB database, where the passwords are hashed and so forth, but with the scope of this application being contained within 4 months I see it more fitting to use a service such as firebase. There is a live version of the site up now at the link below",
+            " On top of this, I have also redesigned the blog website to look more sleek. I may redesign this website again after I graduate because while it does a good job of showing off what I am capable of making, I do not think that it does a good job of saying exactly what my skills are.<div><p>View More:</p></div><div><a href=http://pitt-menu.joelaustin.net target=’_blank’>Pitt-Menu.JoelAustin.Net</a></div>"
+        ],
+        "images": [
+            {"src": "https://i.imgur.com/9aG9c6w.jpg", "width": 1, "height":1},
+            { "src": "https://i.imgur.com/uThsJoF.png",  "width": 1, "height":1}
+        ]
+    },
+    {
         "title": "Firebase Began, REST API calls Python Processor",
         "date": "Mar 6 2019",
         "week":7,
