@@ -1,5 +1,18 @@
 [
     {
+        "title": "Firebase Database References",
+        "date": "Mar 25 2019",
+        "week":7,
+        "paragraphs":[
+            "Today, I am in the process of setting up menu items that retrieve their own user data from Firebase. At this point there are some parts that need refactoring, as things have gotten complicated. I need to make a diagram that outlines exactly what data is retrieved from the Firebase. The current plan is to have all user data such as descriptions of items, photos, and such be stored in the firebase, whereas the actual items are in MySQL.",
+            "I am also in the process of going though and writing the documentation on all my current work. This includes more thorough comments, as well as updating the project README files."
+        ],
+        "images": [
+            {"src": "https://i.imgur.com/mddiOZr.png", "width": 1, "height":1}
+           
+        ]
+    },
+    {
         "title": "Sign Up and Login Available",
         "date": "Mar 20 2019",
         "week":7,
