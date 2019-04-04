@@ -1,5 +1,19 @@
 [
     {
+        "title": "Google Image Pulling, UI Updated",
+        "date": "Apr 04 2019",
+        "week": 7,
+        "paragraphs":[
+            "This last week and a half I spent the time developing a feature that pulls the first 800x800 image from a google image search of the food items and store it into a google bucket. The URL from each image in the bucket is then stored under the item in the Firebase Realtime Database.", 
+            "The user interface of the website has also changed from being a bunch of dark colors to the University of Pittsburgh colors. This is a choice I thought about for a long time, as I don’t think the school colors make for a particularly pretty website. Especially the gold color. Throughout my capstone, I’ve heavily focused on the design, because that is an area that I have always struggled in. I have consulted many people, including a number of art students and people from the “Reactiflux” discord server."
+        ],
+        "images": [
+            {"src": "https://i.imgur.com/RRSm55Z.png", "width": 1, "height": 1},
+            {"src": "https://i.imgur.com/mYWGUIt.jpg", "width": 1, "height": 1},
+            {"src": "https://i.imgur.com/bquBOLe.jpg", "width": 1, "height": 1}
+        ]
+    },
+    {
         "title": "Firebase Database References",
         "date": "Mar 25 2019",
         "week":7,
