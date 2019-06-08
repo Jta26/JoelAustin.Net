@@ -10,7 +10,7 @@ import csharp from '../img/csharp.png';
 import jsimg from '../img/js.png';
 import pyimg from '../img/py.png';
 import arrow from '../img/arrow.png';
-import profimg from '../img/prof.jpg';
+import profimg from '../img/prof3.jpg';
 import profimg2 from '../img/prof2.jpg';
 
 class Home extends Component {
@@ -57,54 +57,32 @@ class Home extends Component {
                         </a>
                     </div>
                 </div>
-                <Fade bottom>
-                    {/* <div className='about' id='about'>
-                        <ImgText img={profimg} text='I am currently a student at the University of Pittsburgh who also works remotely for IPC Systems Inc, a mid-size company headquartered in the Jersey City and Manhattan Area. At IPC Systems, I contribute towards a large Javascript desktop and mobile application. My hobbies (besides coding) include cooking and playing of the guitar.'/>
-                    </div> */}
-                    <div className='about' id='about'>
-                            <div className='img-wrapper'>
-                                <img src={profimg}/>
-                            </div>
-                            <p>I am a student at the University of Pittsburgh who also works remotely for IPC Systems Inc, a mid-size company headquartered in the Jersey City and Manhattan Area. At IPC Systems, I contribute towards a large Javascript desktop and mobile application. My hobbies (besides coding) include cooking and playing of the guitar.</p>
-                        </div>
+                <div id='about'>
+                    <img id='about-image' src={profimg}/>
+                    <p id='about-content'>Hi there! My name is Joel Austin, and this website isn't just a place for you to learn about me. It's also a passion project of my own. As a software engineer, I am dedicated to designing and developing the very best. My specialties lie mostly in front end development, but I also have expierence in mobile and backend development, as well as a bit of data science. Other than code my hobbies include cooking for others, playing guitar, and studying japanese.</p>
+                </div>
+                <div >
 
-                </Fade>  
-                    <div className='skills'  id='skills'>
+                </div>
+                <div id='experience'>
+                    <p>Experience</p>
+                    <div class='exp-item'>
+                        <div class='exp-header'>
+                            <p>Title</p>
+                            <p>Date</p>
+                        </div>
+                        <div class='exp-content'>
+                            <ul>
+                                <li>test</li>
+                                <li>testtesttestsseafsdfasd</li>
+                            </ul>
+                        </div>
                         
-                        <div className='skill'>
-                            <Fade bottom>
-                            <div className='img-wrapper'>
-                                <img src={csharp}/>
-                            </div>
-                            <p>Knowledgeable in .NET applications including console, form, and ASP, and Xamarin.</p>
-
-                            </Fade>
-                        </div>
-                        <div className='skill'>
-                            <Fade bottom>
-                            <div className='img-wrapper'>
-                                <img src={jsimg}/>
-                            </div>
-                            <p>Specialty in Javascript Apps. React, React-Native, Angular, as well as Node.js.</p>                            
-                            </Fade>
+                        <div>
 
                         </div>
-                        <div className='skill'>
-                            <Fade bottom>
-                            <div className='img-wrapper'>
-                                <img src={pyimg}/>
-                            </div>
-                            <p>Excellent Python skills using packages such as Numpy, Pandas, BeautifulSoup, and Flask.</p>
-                            </Fade>
-
-                        </div>
-                        {/* <ImgText img={csharp} text='Knowledgeable in .NET applications including console, form, and ASP, and Xamarin.'/>
-                        <ImgText img={jsimg} text=''/>
-                        <ImgText img={pyimg} text='Excellent Python skills using packages such as Numpy, Pandas, BeautifulSoup, and Flask.'/> */}
                     </div>
-                 
-                 
-                
+                </div>
             </div>
         )
     }
