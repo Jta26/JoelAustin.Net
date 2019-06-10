@@ -3,7 +3,7 @@ import '../css/home.css';
 import Typed from 'react-typed';
 import { Fade, Slide } from 'react-reveal';
 import { Grid, Image, Divider, Container } from 'semantic-ui-react';
-
+import portfolio from '../data/portfolio.json';
 
 import Header from '../components/Header';
 
@@ -22,7 +22,6 @@ import firebaseimg from '../img/firebase.png'
 import arrow from '../img/arrow.png';
 import profimg from '../img/prof4.jpg';
 import profimg3 from '../img/prof3.jpg';
-import { readFile } from 'fs';
 
 class Home extends Component {
     constructor(props) {
@@ -40,6 +39,7 @@ class Home extends Component {
             isAboutHover: false,
         }
         this.calculateScroll = this.calculateScroll.bind(this);
+        this.loadProjects = this.loadProjects.bind(this);
         this.onAboutImageHover = this.onAboutImageHover.bind(this);
 
     }
@@ -80,6 +80,19 @@ class Home extends Component {
         else {
             return false;
         }
+    }
+    loadProjects() {
+        let projects = portfolio;
+        console.log(projects);
+        projects.map(project => {
+            return (
+                <div className='project'>
+                    <h2>{project.title}</h2>
+                    <img src={project.images[0]}></img>
+                </div>
+            )
+        })
+
     }
     onAboutImageHover() {
         this.setState({isAboutHover: !this.state.isAboutHover});
@@ -221,18 +234,12 @@ class Home extends Component {
                             </div> 
                             </Fade>
                         </div>
-                        
-                     
-                      
-                        
-          
-
                     </div>
                     <div className='content-item'>
                         <div className='skills'>
                             <h2>Some Tech I Love!</h2>
                             <div className='skill'>
-                            <Fade right when={this.state.expScroll} cascade>
+                            <Fade right when={this.state.exp1Scroll} cascade>
                                 <ul>
                                     <li><a href='https://reactjs.org/' target='__blank'><img src={reactimg}/></a></li>
                                     <li><a href='https://angular.io/' target='__blank'><img src={angularimg}/></a></li>
@@ -253,25 +260,27 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                <h1 id='projects' >Projects</h1>
+                <h1 id='projects-head' >Projects</h1>
                 <div id='projects'>
-                    <div className='project'>
-                        <img src={reactimg}/>
-                        <h3>title</h3>
-                    </div>
-                    <div className='project'>
-                        <img src={reactimg}/>
-                        <h3>title</h3>
-                    </div>
-                    <div className='project'>
-                        <img src={reactimg}/>
-                        <h3>title</h3>
-                    </div>
-                    <div className='project'>
-                        <img src={reactimg}/>
-                        <h3>title</h3>
-                    </div>
+                    {portfolio.map(project => {
+                        return (
+                            <div className='project'>
+                                <img src={project.images[0].src}></img>
+                                <div>
+                                    <h3>{project.title}</h3>
+                                    <div>{project.date}</div>
+                                    <p></p>
+                                </div>
+
+                                
+                                
+                            </div>
+                        );
+                    })}
+
+                    
                 </div>
+                <h1 id='contact-me-head'>Contact Me</h1>
 
             </div>
         )
