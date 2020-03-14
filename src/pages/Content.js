@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../css/blogs.css';
 import Header from '../components/Header';
 import BlogItem from '../components/blogItem';
-import Fade from 'react-reveal';
 import blogs from '../data/blogs.json';
 import portfolio from '../data/portfolio.json';
 
@@ -43,7 +42,6 @@ class Content extends Component {
                     {this.state.content.map((item, i) => {
                         return(
                             <div key={i}>
-                            <Fade bottom>
                             <BlogItem
                                 title={item.title}
                                 date={item.date}
@@ -51,7 +49,7 @@ class Content extends Component {
                                 paragraphs={item.paragraphs}
                                 images={item.images}
                             />
-                            </Fade>
+        
                             </div>
                             
                         )

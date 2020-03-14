@@ -26,7 +26,6 @@ class App extends Component {
           <div>
         
              <Route exact path='/' component={TransitionShell(Home)}/>
-              <Route path='/blogs' component={TransitionShell(Content)}/>
               <Route path='/portfolio' component={TransitionShell(Content)}/>
               <Route path='/blog' component={TransitionShell(Blog)}/>
           </div>

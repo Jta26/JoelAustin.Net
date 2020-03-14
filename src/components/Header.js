@@ -21,8 +21,7 @@ class Header extends Component {
       <div className='header-wrapper'>
         <div className='nav-wrapper'>
               <Link to='/' className='nav-item'>Index</Link>
-              <Link to='/blogs' className='nav-item'>Blog</Link>
-              <Link to='/portfolio' className='nav-item'>Portfolio</Link>
+              <Link to='/portfolio' className='nav-item'>Projects</Link>
           {/* <div className='nav-mobile'>
               <Link to='/' className='nav-mobile-item'>Index</Link>
               <Link to='/blogs' className='nav-mobile-item'>Blog</Link>

@@ -4,7 +4,8 @@ body, html {
 .blog-container {
     background-color: #52a4d8;
     min-height: 100vh;
-
+    height: 100vh;
+    overflow: scroll;
 }
 .blog-wrapper {
     width: 70%;

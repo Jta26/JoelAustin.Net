@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Fade from 'react-reveal';
+
 import LightBox from 'react-images';
 import Img from 'react-images';
 import parse from 'html-react-parser';
@@ -69,7 +69,6 @@ class Blog extends Component {
         return(
             <div className='blog-container'>
                 <Header/>
-                <Fade bottom>
                 <div className='blog-wrapper'>
                     <div className='blog-header'>
                         <div className='blog-header-bkrnd'></div>
@@ -103,7 +102,6 @@ class Blog extends Component {
                     
                     
                 </div>
-                </Fade>
             </div>
         )
     }

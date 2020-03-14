@@ -57,5 +57,17 @@
             {"src": "/img/BABL/BablMatch.png", "width": 1, "height": 1}
             
         ]
+    },
+    {
+        "title": "Wifinder NYC",
+        "date": "Flask Web App",
+        "week":"",
+        "paragraphs":[
+           "Wifinder NYC is a quick web app built using Flask and OpenStreetMap. The map takes in a point and finds the nearest 20 hotspots to your location using a public data set from The City of New York.<div>View More:</div><div>See the project <a href='https://wifinder-nyc.herokuapp.com/' target='_blank' <a>Here</a></div><div>The Dataset can be found <a href='https://data.cityofnewyork.us/api/views/varh-9tsp/rows.json' target='_blank'>here</a></div> <div>The project can also be found on <a href='https://github.com/Jta26/Wifinder-NYC' target='_blank'>Github</a></div>"
+        ],
+        "images": [
+            {"src": "/img/Wifinder/1.png", "width": 1, "height": 1}
+            
+        ]
     }
 ]

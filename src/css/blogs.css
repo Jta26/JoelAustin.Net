@@ -1,6 +1,7 @@
 .blogs-container {
     background-color: #52a4d8;
-    
+    overflow: scroll;
+    height: 100vh;
     
 }
 .blogs-wrapper {
