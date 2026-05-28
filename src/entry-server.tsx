@@ -10,9 +10,7 @@ export default createHandler(() => (
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
           {assets}
-          {import.meta.env.DEV && (
-            <link rel="stylesheet" href="/virtual:stylex.css" />
-          )}
+          {import.meta.env.DEV && <link rel="stylesheet" href="/virtual:stylex.css" />}
         </head>
         <body>
           <div id="app">{children}</div>

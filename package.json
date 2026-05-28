@@ -5,7 +5,12 @@
     "dev": "vite dev",
     "build": "vite build",
     "start": "vite start",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix && prettier --write .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "bun run lint && bun run format:check"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
@@ -20,6 +25,13 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "@stylexjs/unplugin": "^0.18.3"
+    "@eslint/js": "^10.0.1",
+    "@stylexjs/unplugin": "^0.18.3",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-solid": "^0.14.5",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.3",
+    "typescript-eslint": "^8.60.0"
   }
 }

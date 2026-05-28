@@ -1,0 +1,17 @@
+# Build output & generated
+dist
+.output
+.vinxi
+.nitro
+app.config.timestamp_*.js
+
+# Legacy code (old version of the site)
+v1
+
+# Dependencies
+node_modules
+
+# Lockfiles (don't format these)
+package-lock.json
+pnpm-lock.yaml
+bun.lock

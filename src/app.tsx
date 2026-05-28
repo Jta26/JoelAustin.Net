@@ -31,8 +31,12 @@ export default function App() {
         <MetaProvider>
           <Title>SolidStart - Basic</Title>
           <nav {...stylex.attrs(headerStyles.nav)}>
-            <a {...stylex.attrs(headerStyles.link)} href="/">Index</a>
-            <a {...stylex.attrs(headerStyles.link)} href="/about">About</a>
+            <a {...stylex.attrs(headerStyles.link)} href="/">
+              Index
+            </a>
+            <a {...stylex.attrs(headerStyles.link)} href="/about">
+              About
+            </a>
           </nav>
           <StyleXDev />
           <Suspense>{props.children}</Suspense>

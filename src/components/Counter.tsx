@@ -29,11 +29,7 @@ const styles = stylex.create({
 export default function Counter() {
   const [count, setCount] = createSignal(0);
   return (
-    <button
-      {...stylex.attrs(styles.button)}
-      onClick={() => setCount(count() + 1)}
-      type="button"
-    >
+    <button {...stylex.attrs(styles.button)} onClick={() => setCount(count() + 1)} type="button">
       Clicks: {count()}
     </button>
   );

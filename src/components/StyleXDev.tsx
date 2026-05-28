@@ -7,8 +7,8 @@ import { onMount } from "solid-js";
 export default function StyleXDev() {
   onMount(() => {
     if (import.meta.env.DEV) {
-      // @ts-ignore - virtual module provided by @stylexjs/unplugin in dev
-      import("virtual:stylex:runtime");
+      // @ts-expect-error - virtual module provided by @stylexjs/unplugin in dev
+      void import("virtual:stylex:runtime");
     }
   });
   return null;
