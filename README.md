@@ -1,27 +1,41 @@
-# SolidStart
+# SolidStart + StyleX
 
-Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
+SolidStart project with [StyleX](https://stylexjs.com) integrated for type-safe, atomic CSS-in-JS styling.
 
-## Creating a project
+Uses Bun (lockfile + runtime compatible) + Vite + SolidJS.
+
+## Setup
 
 ```bash
-# create a new project in the current directory
-npm init solid@latest
-
-# create a new project in my-app
-npm init solid@latest my-app
+bun install
 ```
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```bash
+bun run dev
+```
+
+## Building
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+bun run build
+bun run preview   # or the nitro output
 ```
+
+## Styling with StyleX
+
+- Use `stylex.create()` to define styles (supports pseudo, media, etc. via nested objects)
+- Apply with `{...stylex.attrs(styles.foo)}` (the `attrs` API is required for SolidJS / non-React)
+- Global CSS lives in `src/app.css` (StyleX output is layered + appended)
+- See `src/components/Counter.tsx` and the nav in `src/app.tsx` for live examples
+- Theming: use `stylex.defineVars()` in `*.stylex.ts` files + `stylex.createTheme()`
+
+Dev HMR for styles and production CSS extraction are fully wired via `@stylexjs/unplugin`.
+
+## More
+
+Everything else from the original SolidStart template applies.
 
 ## Building
 
