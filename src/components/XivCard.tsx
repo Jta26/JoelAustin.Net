@@ -7,7 +7,6 @@ const SIDE_URL = "/images/xiv/card/card-side-border.png";
 
 const HEADER_HEIGHT = 14;
 const FOOTER_HEIGHT = 18;
-const SIDE_WIDTH = 8; // Visual thickness of the vertical side borders
 
 export interface XivCardXStyle {
   width?: string | number;
