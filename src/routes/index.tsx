@@ -2,6 +2,7 @@ import { Title } from "@solidjs/meta";
 import { createSignal } from "solid-js";
 import Counter from "~/components/Counter";
 import XivActionButton from "~/components/XivActionButton";
+import XivButton from "~/components/XivButton";
 import XivCard from "~/components/XivCard";
 
 const AEOLIAN_ICON = "/images/xiv/icons/Aeolian_Edge.png";
@@ -82,6 +83,52 @@ export default function Home() {
         </p>
         <div style={{ "font-size": "0.9rem", "margin-top": "0.25rem" }}>
           Activations: <strong>{activations()}</strong>
+        </div>
+      </section>
+
+      <section style={{ "margin-bottom": "2rem" }}>
+        <h2 style={{ "font-size": "1.1rem", "margin-bottom": "0.75rem", color: "#555" }}>
+          XivButton
+        </h2>
+        <p style={{ "font-size": "0.85rem", color: "#666", "margin-bottom": "1rem" }}>
+          A general-purpose button styled after Final Fantasy XIV's UI buttons.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            "align-items": "center",
+            gap: "12px",
+            "flex-wrap": "wrap",
+            padding: "12px",
+            background: "#2a2a2a",
+            "border-radius": "8px",
+            "margin-bottom": "0.75rem",
+          }}
+        >
+          <XivButton label="Default" onActivate={handleActivate} />
+          <XivButton label="Apply" onActivate={handleActivate} />
+          <XivButton label="Disabled" disabled />
+        </div>
+
+        <div style={{ "font-size": "0.85rem", color: "#666" }}>
+          <strong>Usage:</strong>
+          <pre
+            style={{
+              background: "#111",
+              padding: "8px 12px",
+              "border-radius": "4px",
+              "font-size": "0.8rem",
+              "margin-top": "4px",
+              overflow: "auto",
+            }}
+          >
+            {`<XivButton 
+  label="Apply" 
+  onActivate={() => {}} 
+  disabled={false} 
+/>`}
+          </pre>
         </div>
       </section>
 
