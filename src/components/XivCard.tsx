@@ -57,16 +57,12 @@ const styles = stylex.create({
     bottom: FOOTER_HEIGHT,
     left: 0,
     right: 0,
-    backgroundImage: `url(${SIDE_URL}), url(${SIDE_URL})`,
+    backgroundImage: `url(${SIDE_URL})`,
     backgroundPosition: "left top, right top",
-    backgroundRepeat: "repeat-y, repeat-y",
-    paddingTop: 4,
-    paddingBottom: 4,
+    backgroundRepeat: "repeat-y",
+    backgroundSize: `100%`,
     overflow: "auto",
     zIndex: 1,
-    // No background color — interior of the card should be transparent
-    // so the border (header + footer + side borders) is clearly visible
-    // against whatever is behind the card.
   },
 });
 
