@@ -1,6 +1,7 @@
 import { splitProps } from "solid-js";
 import type { Component, JSX } from "solid-js";
 import * as stylex from "@stylexjs/stylex";
+import { xiv, radii } from "../tokens.stylex";
 
 export interface XivButtonProps {
   label: string;
@@ -14,28 +15,28 @@ export interface XivButtonProps {
 const styles = stylex.create({
   button: {
     paddingBlock: "2px",
-    borderRadius: "30px",
+    borderRadius: radii.pill,
     minWidth: "150px",
     borderWidth: 0,
     borderColor: "transparent",
     borderStyle: "solid",
-    backgroundColor: "#4B4B4B",
-    backgroundImage: "linear-gradient(180deg, #636363 0%, #4B4B4B 45%, #373737 55%, #454545 100%)",
+    backgroundColor: xiv.buttonBg,
+    backgroundImage: xiv.buttonGradient,
     backgroundSize: "100% 100%",
     boxShadow: "0px 0px 2px 0px rgba(0,0,0,0.75)",
     cursor: "pointer",
-    fontFamily: "meiryo, system-ui, sans-serif",
+    fontFamily: xiv.fontFamily,
     fontSize: "16px",
-    color: "white",
+    color: xiv.buttonText,
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    transition: "filter 80ms ease, transform 80ms ease, box-shadow 80ms ease",
+    transition: `filter ${xiv.transitionFast}, transform ${xiv.transitionFast}, box-shadow ${xiv.transitionFast}`,
   },
   pressable: {
     filter: {
       default: "none",
-      ":hover": "brightness(1.2)",
+      ":hover": `brightness(${xiv.hoverBrightness})`,
     },
     transform: {
       default: "none",
@@ -49,7 +50,7 @@ const styles = stylex.create({
   disabled: {
     filter: {
       default: "none",
-      ":disabled": "brightness(.65)",
+      ":disabled": `brightness(${xiv.disabledBrightness})`,
     },
     cursor: "not-allowed",
   },

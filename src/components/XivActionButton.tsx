@@ -48,6 +48,7 @@ const styles = stylex.create({
     border: "0",
     borderStyle: "none",
     borderWidth: "0",
+    backgroundColor: "transparent",
   },
 
   // First <img> - the background / socket layer

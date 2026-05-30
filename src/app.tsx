@@ -29,13 +29,16 @@ export default function App() {
     <Router
       root={props => (
         <MetaProvider>
-          <Title>SolidStart - Basic</Title>
+          <Title>Joel Austin</Title>
           <nav {...stylex.attrs(headerStyles.nav)}>
             <a {...stylex.attrs(headerStyles.link)} href="/">
-              Index
+              Home
             </a>
             <a {...stylex.attrs(headerStyles.link)} href="/about">
               About
+            </a>
+            <a {...stylex.attrs(headerStyles.link)} href="/components_demo">
+              XIV Components
             </a>
           </nav>
           <StyleXDev />

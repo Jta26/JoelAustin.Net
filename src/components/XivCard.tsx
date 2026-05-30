@@ -1,5 +1,6 @@
 import type { Component, JSX } from "solid-js";
 import * as stylex from "@stylexjs/stylex";
+import type { StyleXStyles } from "@stylexjs/stylex";
 
 const HEADER_URL = "/images/xiv/card/card-header.png";
 const FOOTER_URL = "/images/xiv/card/card-footer.png";
@@ -8,16 +9,9 @@ const SIDE_URL = "/images/xiv/card/card-side-border.png";
 const HEADER_HEIGHT = 14;
 const FOOTER_HEIGHT = 18;
 
-export interface XivCardXStyle {
-  width?: string | number;
-  height?: string | number;
-}
-
 export interface XivCardProps {
-  xstyle?: XivCardXStyle;
+  xstyle?: StyleXStyles<{ width: number; height: number }>;
   children?: JSX.Element;
-  class?: string;
-  style?: JSX.CSSProperties;
 }
 
 const styles = stylex.create({
@@ -66,24 +60,11 @@ const styles = stylex.create({
   },
 });
 
-const toSize = (value?: string | number) => {
-  if (value == null) return undefined;
-  return typeof value === "number" ? `${value}px` : value;
-};
-
 export const XivCard: Component<XivCardProps> = props => {
-  const { xstyle, children, class: className, style } = props;
+  const { xstyle, children } = props;
 
   return (
-    <div
-      class={className}
-      {...stylex.attrs(styles.root)}
-      style={{
-        width: toSize(xstyle?.width),
-        height: toSize(xstyle?.height),
-        ...style,
-      }}
-    >
+    <div {...stylex.attrs(styles.root, xstyle)}>
       <div {...stylex.attrs(styles.header)} />
       <div {...stylex.attrs(styles.content)}>{children}</div>
       <div {...stylex.attrs(styles.footer)} />
