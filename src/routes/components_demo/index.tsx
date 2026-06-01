@@ -4,7 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import XivActionButton from "~/components/XivActionButton";
 import XivButton from "~/components/XivButton";
 import XivCard from "~/components/XivCard";
-import { xiv, xivDark, xivSlate, xivClassic } from "../../tokens.stylex";
+import { xiv, xivDark } from "../../tokens.stylex";
 
 const AEOLIAN_ICON = "/images/xiv/icons/Aeolian_Edge.png";
 
@@ -52,34 +52,6 @@ const pageStyles = stylex.create({
     color: xiv.textPrimary,
     marginTop: "0.6rem",
   },
-  // Simple theme switcher UI
-  themeSwitcher: {
-    display: "flex",
-    gap: "8px",
-    justifyContent: "center",
-    marginBottom: "1.25rem",
-  },
-  themeButton: {
-    fontFamily: xiv.fontFamily,
-    fontSize: "0.75rem",
-    padding: "4px 10px",
-    borderRadius: "999px",
-    border: "1px solid rgba(255,255,255,0.2)",
-    backgroundColor: "rgba(255,255,255,0.06)",
-    color: xiv.textMuted,
-    cursor: "pointer",
-    transition: `all ${xiv.transitionFast}`,
-    ":hover": {
-      backgroundColor: "rgba(255,255,255,0.12)",
-      color: xiv.textPrimary,
-    },
-  },
-  themeButtonActive: {
-    backgroundColor: xiv.textGold,
-    color: "#111",
-    borderColor: xiv.textGold,
-    fontWeight: 600,
-  },
   wideCardWrapper: {
     maxWidth: 420,
     width: "100%",
@@ -98,26 +70,15 @@ const cardSizes = stylex.create({
   usage: { width: "100%", height: 132 },
 });
 
-type ThemeName = "dark" | "slate" | "classic";
-
-const THEMES: Record<ThemeName, stylex.Theme<typeof xiv>> = {
-  dark: xivDark,
-  slate: xivSlate,
-  classic: xivClassic,
-};
-
 export default function ComponentsDemo() {
   const [activations, setActivations] = createSignal(0);
-  const [themeName, setThemeName] = createSignal<ThemeName>("dark");
-
-  const currentTheme = () => THEMES[themeName()];
 
   const handleActivate = () => {
     setActivations(n => n + 1);
   };
 
   return (
-    <main {...stylex.attrs(currentTheme(), pageStyles.wrapper)}>
+    <main {...stylex.attrs(xivDark, pageStyles.wrapper)}>
       <Title>Joel Austin • XIV UI Components</Title>
 
       <div {...stylex.attrs(pageStyles.container)}>
@@ -136,40 +97,6 @@ export default function ComponentsDemo() {
               XIV UI Components
             </div>
           </XivCard>
-        </div>
-
-        {/* Theme switcher — demonstrates multiple createTheme() instances */}
-        <div {...stylex.attrs(pageStyles.themeSwitcher)}>
-          <button
-            type="button"
-            {...stylex.attrs(
-              pageStyles.themeButton,
-              themeName() === "dark" && pageStyles.themeButtonActive,
-            )}
-            onClick={() => setThemeName("dark")}
-          >
-            Dark (Default)
-          </button>
-          <button
-            type="button"
-            {...stylex.attrs(
-              pageStyles.themeButton,
-              themeName() === "slate" && pageStyles.themeButtonActive,
-            )}
-            onClick={() => setThemeName("slate")}
-          >
-            Slate
-          </button>
-          <button
-            type="button"
-            {...stylex.attrs(
-              pageStyles.themeButton,
-              themeName() === "classic" && pageStyles.themeButtonActive,
-            )}
-            onClick={() => setThemeName("classic")}
-          >
-            Classic
-          </button>
         </div>
 
         <p {...stylex.attrs(pageStyles.intro)}>
@@ -284,7 +211,7 @@ export default function ComponentsDemo() {
             <div style={{ padding: "13px 18px" }}>
               <div {...stylex.attrs(pageStyles.cardTitle)}>XivCard</div>
               <p {...stylex.attrs(pageStyles.cardText)} style={{ "margin-bottom": "0.65rem" }}>
-                Ornate window using fixed header/footer images + vertically repeating side borders.
+                Ornate window using layered gradients, inset shadows, and fixed border radii.
                 Content sits in the interior. Specify width/height only via the <code>xstyle</code>{" "}
                 prop.
               </p>
@@ -322,7 +249,7 @@ export default function ComponentsDemo() {
                   <div style={{ padding: "9px 12px", color: "#ddd", "font-size": "0.82rem" }}>
                     <strong>Basic card</strong>
                     <br />
-                    218×138 — interior uses the repeating side border texture.
+                    218×138 — gradient frame stays consistent while resizing.
                   </div>
                 </XivCard>
               </div>
@@ -351,7 +278,7 @@ export default function ComponentsDemo() {
             <div style={{ padding: "8px 12px", color: "#ddd", "font-size": "0.82rem" }}>
               <strong>Medium</strong>
               <br />
-              300×118 — header/footer stretch horizontally.
+              300×118 — border radius and frame width stay fixed.
             </div>
           </XivCard>
           <div {...stylex.attrs(pageStyles.wideCardWrapper)}>
@@ -359,7 +286,7 @@ export default function ComponentsDemo() {
               <div style={{ padding: "8px 12px", color: "#ddd", "font-size": "0.82rem" }}>
                 <strong>Wide (100%)</strong>
                 <br />
-                Constrained to 420px max. Side borders tile vertically.
+                Constrained to 420px max. Gradient border does not stretch artwork.
               </div>
             </XivCard>
           </div>
