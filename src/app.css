@@ -1,6 +1,13 @@
+@font-face {
+  font-family: "Schuss Sans PCG";
+  src: url("/fonts/SchussSansPCG-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
-  font-family:
-    Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Schuss Sans PCG", system-ui, sans-serif;
 }
 
 a {

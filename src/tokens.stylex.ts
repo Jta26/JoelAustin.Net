@@ -65,7 +65,7 @@ export const xiv = stylex.defineVars({
   disabledBrightness: "0.65",
 
   // --- Typography (FFXIV flavor) ---
-  fontFamily: "meiryo, system-ui, sans-serif",
+  fontFamily: '"Schuss Sans PCG", system-ui, sans-serif',
   fontFamilyMono: "ui-monospace, SFMono-Regular, Menlo, monospace",
   letterSpacingTitle: "0.3px",
   letterSpacingTitleLarge: "0.5px",
@@ -105,7 +105,7 @@ export const xivDark = stylex.createTheme(xiv, {
   activeBrightness: "0.65",
   disabledBrightness: "0.65",
 
-  fontFamily: "meiryo, system-ui, sans-serif",
+  fontFamily: '"Schuss Sans PCG", system-ui, sans-serif',
   fontFamilyMono: "ui-monospace, SFMono-Regular, Menlo, monospace",
   letterSpacingTitle: "0.3px",
   letterSpacingTitleLarge: "0.5px",
@@ -142,7 +142,7 @@ export const xivSlate = stylex.createTheme(xiv, {
   activeBrightness: "0.7",
   disabledBrightness: "0.6",
 
-  fontFamily: "meiryo, system-ui, sans-serif",
+  fontFamily: '"Schuss Sans PCG", system-ui, sans-serif',
   fontFamilyMono: "ui-monospace, SFMono-Regular, Menlo, monospace",
   letterSpacingTitle: "0.3px",
   letterSpacingTitleLarge: "0.5px",
@@ -175,7 +175,7 @@ export const xivClassic = stylex.createTheme(xiv, {
   activeBrightness: "0.72",
   disabledBrightness: "0.65",
 
-  fontFamily: "meiryo, system-ui, sans-serif",
+  fontFamily: '"Schuss Sans PCG", system-ui, sans-serif',
   fontFamilyMono: "ui-monospace, SFMono-Regular, Menlo, monospace",
   letterSpacingTitle: "0.3px",
   letterSpacingTitleLarge: "0.5px",
