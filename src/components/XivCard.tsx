@@ -61,12 +61,10 @@ const styles = stylex.create({
 });
 
 export const XivCard: Component<XivCardProps> = props => {
-  const { xstyle, children } = props;
-
   return (
-    <div {...stylex.attrs(styles.root, xstyle)}>
+    <div {...stylex.attrs(styles.root, props.xstyle)}>
       <div {...stylex.attrs(styles.header)} />
-      <div {...stylex.attrs(styles.content)}>{children}</div>
+      <div {...stylex.attrs(styles.content)}>{props.children}</div>
       <div {...stylex.attrs(styles.footer)} />
     </div>
   );
