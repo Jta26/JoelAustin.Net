@@ -1,9 +1,26 @@
-import { createMemo, splitProps } from "solid-js";
+import { Show, createMemo, createSignal, splitProps } from "solid-js";
 import type { Component, JSX } from "solid-js";
 import * as stylex from "@stylexjs/stylex";
 
 const BASE_URL = "/images/xiv/action-button/action-button-base.png";
 const FRAME_URL = "/images/xiv/action-button/action-button-frame.png";
+
+const pressBurst = stylex.keyframes({
+  "0%": {
+    opacity: 0,
+    transform: "translate(-50%, -50%) scale(0.08)",
+  },
+  "14%": {
+    opacity: 0.94,
+  },
+  "58%": {
+    opacity: 0.44,
+  },
+  "100%": {
+    opacity: 0,
+    transform: "translate(-50%, -50%) scale(1.72)",
+  },
+});
 
 /**
  * Opinionated presets for supported button sizes.
@@ -44,6 +61,8 @@ const styles = stylex.create({
     position: "relative",
     display: "inline-block",
     cursor: "pointer",
+    overflow: "hidden",
+    borderRadius: "12%",
     // Explicit border reset as extra safety against UA styles
     border: "0",
     borderStyle: "none",
@@ -70,6 +89,38 @@ const styles = stylex.create({
     display: "block",
   },
 
+  pressClip: {
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    overflow: "hidden",
+    borderRadius: "10%",
+    pointerEvents: "none",
+    userSelect: "none",
+    zIndex: 2,
+  },
+
+  pressGlow: {
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    width: "72%",
+    height: "72%",
+    borderRadius: "50%",
+    pointerEvents: "none",
+    userSelect: "none",
+    opacity: 0,
+    transform: "translate(-50%, -50%) scale(0.08)",
+    transformOrigin: "center",
+    backgroundImage:
+      "radial-gradient(circle, rgba(255, 250, 194, 0.9) 0%, rgba(255, 219, 86, 0.72) 32%, rgba(211, 139, 25, 0.46) 57%, rgba(142, 80, 9, 0.18) 72%, rgba(142, 80, 9, 0) 82%)",
+    filter: "blur(0.01em)",
+    animationName: pressBurst,
+    animationDuration: "300ms",
+    animationTimingFunction: "cubic-bezier(0.12, 0.82, 0.22, 1)",
+    animationFillMode: "forwards",
+  },
+
   // The cover div that holds the frame as a background-image (exactly like item_icon_cover on the sites)
   // Made size-flexible using percentages instead of fixed 152px.
   cover: {
@@ -83,6 +134,7 @@ const styles = stylex.create({
     backgroundSize: "100% 100%",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "0 0",
+    zIndex: 3,
   },
 });
 
@@ -113,10 +165,18 @@ export const XivActionButton: Component<XivActionButtonProps> = props => {
 
   const iconScale = () => preset().scale;
   const verticalOffset = () => `${preset().verticalOffset}px`;
+  const [pressBurstKey, setPressBurstKey] = createSignal(0);
+
+  const playPressBurst = () => {
+    if (!local.disabled) {
+      setPressBurstKey(key => key + 1);
+    }
+  };
 
   const handleClick: JSX.EventHandler<HTMLButtonElement, MouseEvent> = _e => {
-    if (!local.disabled && local.onActivate) {
-      local.onActivate();
+    if (!local.disabled) {
+      playPressBurst();
+      local.onActivate?.();
     }
   };
 
@@ -153,6 +213,21 @@ export const XivActionButton: Component<XivActionButtonProps> = props => {
         alt=""
         draggable={false}
       />
+
+      <Show keyed when={pressBurstKey()}>
+        <div
+          {...stylex.attrs(styles.pressClip)}
+          style={{
+            width: `${iconScale() * 100}%`,
+            height: `${iconScale() * 100}%`,
+            transform: `translate(-50%, calc(-50% + ${verticalOffset()}))`,
+          }}
+          onAnimationEnd={() => setPressBurstKey(0)}
+          aria-hidden="true"
+        >
+          <div {...stylex.attrs(styles.pressGlow)} />
+        </div>
+      </Show>
 
       {/* 3. Frame as background on a cover div (exactly like item_icon_cover) */}
       <div {...stylex.attrs(styles.cover)} style={{ "background-image": `url(${FRAME_URL})` }} />
