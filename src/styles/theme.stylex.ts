@@ -3,9 +3,9 @@ import * as stylex from "@stylexjs/stylex";
 const languageUIColorValues = {
   darkSurfaceBackground: "#050914",
   onMediaTextColor: "#070b12",
-  primaryBlue: "#24a8ff",
+  primaryBlue: "#73ddff",
   primaryTextColor: "#d8f3ff",
-  secondaryBlue: "#73ddff",
+  secondaryBlue: "#24a8ff",
   secondaryTextColor: "#a8b8c8",
 } as const;
 
