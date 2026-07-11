@@ -103,7 +103,11 @@ export default function LUIButton({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onPointerDown={handlePointerDown}
-      {...stylex.props(styles.root, disabled && styles.disabled)}
+      {...stylex.props(
+        styles.root,
+        animationStyles.root,
+        disabled && styles.disabled,
+      )}
     >
       <svg
         aria-hidden="true"
@@ -126,8 +130,9 @@ export default function LUIButton({
             height="40"
             {...stylex.props(
               styles.fillPanel,
-              styles.leftFill,
-              isActive && styles.activeFill,
+              animationStyles.fillPanel,
+              animationStyles.leftFill,
+              isActive && animationStyles.activeFill,
             )}
           />
           <rect
@@ -137,13 +142,18 @@ export default function LUIButton({
             height="40"
             {...stylex.props(
               styles.fillPanel,
-              styles.rightFill,
-              isActive && styles.activeFill,
+              animationStyles.fillPanel,
+              animationStyles.rightFill,
+              isActive && animationStyles.activeFill,
             )}
           />
           <polygon
             points="6 38 16 38 94 2 84 2"
-            {...stylex.props(styles.scan, isActive && styles.activeScan)}
+            {...stylex.props(
+              styles.scan,
+              animationStyles.scan,
+              isActive && animationStyles.activeScan,
+            )}
           />
         </g>
         <polygon points={buttonPoints} {...stylex.props(styles.borderShape)} />
@@ -151,7 +161,8 @@ export default function LUIButton({
           points={focusRingPoints}
           {...stylex.props(
             styles.focusRing,
-            isFocusVisible && styles.visibleFocusRing,
+            animationStyles.focusRing,
+            isFocusVisible && animationStyles.visibleFocusRing,
           )}
         />
       </svg>
@@ -161,8 +172,9 @@ export default function LUIButton({
           aria-hidden="true"
           {...stylex.props(
             styles.contrastLabel,
-            isActive && styles.activeContrastLabel,
-            isActive && styles.activeLabel,
+            animationStyles.contrastLabel,
+            isActive && animationStyles.activeContrastLabel,
+            isActive && animationStyles.activeLabel,
           )}
         >
           {children}
@@ -205,7 +217,7 @@ const scanSweep = stylex.keyframes({
 const buttonPoints = "15.5 1 98.5 1 84.5 39 1.5 39";
 const focusRingPoints = "15.5 3.5 95 3.5 84.5 36.5 5 36.5";
 
-const styles = stylex.create({
+const animationStyles = stylex.create({
   activeFill: {
     transform: "translateX(0)",
   },
@@ -220,6 +232,55 @@ const styles = stylex.create({
     animationName: scanSweep,
     animationTimingFunction: "linear",
   },
+  activeContrastLabel: {
+    maskSize: "52% 100%, 52% 100%",
+  },
+  contrastLabel: {
+    maskSize: "0% 100%, 0% 100%",
+    transitionDuration: "650ms",
+    transitionProperty: "mask-size",
+    transitionTimingFunction: "cubic-bezier(.16,.84,.22,1)",
+  },
+  fillPanel: {
+    transformBox: "fill-box",
+    transformOrigin: "center",
+    transitionDuration: "650ms",
+    transitionProperty: "transform",
+    transitionTimingFunction: "cubic-bezier(.16,.84,.22,1)",
+    willChange: "transform",
+  },
+  focusRing: {
+    opacity: 0,
+    transitionDuration: "140ms",
+    transitionProperty: "opacity",
+    transitionTimingFunction: "ease",
+  },
+  leftFill: {
+    transform: "translateX(-101%)",
+  },
+  rightFill: {
+    transform: "translateX(101%)",
+  },
+  root: {
+    opacity: {
+      default: 1,
+      ":active": 0.72,
+    },
+    transitionDuration: "120ms",
+    transitionProperty: "opacity",
+    transitionTimingFunction: "ease",
+  },
+  scan: {
+    opacity: 0,
+    transformBox: "fill-box",
+    transformOrigin: "center",
+  },
+  visibleFocusRing: {
+    opacity: 1,
+  },
+});
+
+const styles = stylex.create({
   disabled: {
     cursor: "not-allowed",
     opacity: 0.48,
@@ -229,9 +290,6 @@ const styles = stylex.create({
     stroke: colorVars.primaryBlue,
     strokeWidth: 2,
     vectorEffect: "non-scaling-stroke",
-  },
-  activeContrastLabel: {
-    maskSize: "52% 100%, 52% 100%",
   },
   baseLabel: {
     color: colorVars.primaryTextColor,
@@ -245,31 +303,17 @@ const styles = stylex.create({
     maskImage: "linear-gradient(#000, #000), linear-gradient(#000, #000)",
     maskPosition: "left center, right center",
     maskRepeat: "no-repeat, no-repeat",
-    maskSize: "0% 100%, 0% 100%",
     pointerEvents: "none",
     position: "absolute",
-    transitionDuration: "650ms",
-    transitionProperty: "mask-size",
-    transitionTimingFunction: "cubic-bezier(.16,.84,.22,1)",
   },
   fillPanel: {
     fill: "#FFFFFF",
-    transformBox: "fill-box",
-    transformOrigin: "center",
-    transitionDuration: "650ms",
-    transitionProperty: "transform",
-    transitionTimingFunction: "cubic-bezier(.16,.84,.22,1)",
-    willChange: "transform",
   },
   focusRing: {
     fill: "none",
     stroke: "#8ee7ff",
     strokeWidth: 2,
     vectorEffect: "non-scaling-stroke",
-    opacity: 0,
-    transitionDuration: "140ms",
-    transitionProperty: "opacity",
-    transitionTimingFunction: "ease",
   },
   innerShape: {
     fill: colorVars.darkSurfaceBackground,
@@ -299,12 +343,6 @@ const styles = stylex.create({
     minWidth: 116,
     width: "100%",
   },
-  leftFill: {
-    transform: "translateX(-101%)",
-  },
-  rightFill: {
-    transform: "translateX(101%)",
-  },
   root: {
     WebkitTapHighlightColor: "transparent",
     padding: 0,
@@ -317,21 +355,11 @@ const styles = stylex.create({
     display: "inline-flex",
     fontFamily: "inherit",
     isolation: "isolate",
-    opacity: {
-      default: 1,
-      ":active": 0.72,
-    },
     outlineStyle: "none",
     position: "relative",
-    transitionDuration: "120ms",
-    transitionProperty: "opacity",
-    transitionTimingFunction: "ease",
   },
   scan: {
     fill: colorVars.secondaryBlue,
-    opacity: 0,
-    transformBox: "fill-box",
-    transformOrigin: "center",
   },
   svgSurface: {
     inset: 0,
@@ -340,8 +368,5 @@ const styles = stylex.create({
     zIndex: 0,
     height: "100%",
     width: "100%",
-  },
-  visibleFocusRing: {
-    opacity: 1,
   },
 });
