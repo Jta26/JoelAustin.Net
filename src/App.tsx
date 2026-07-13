@@ -60,6 +60,10 @@ const styles = stylex.create({
       default: 0,
       "@media (max-width: 700px)": 44,
     },
+    alignContent: {
+      default: "normal",
+      "@media (max-width: 700px)": "start",
+    },
     alignItems: {
       default: "center",
       "@media (max-width: 700px)": "start",
@@ -82,6 +86,10 @@ const styles = stylex.create({
     paddingInline: {
       default: 48,
       "@media (max-width: 700px)": 20,
+    },
+    alignContent: {
+      default: "normal",
+      "@media (max-width: 700px)": "start",
     },
     blockSize: {
       default: "100%",
