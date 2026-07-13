@@ -1,9 +1,7 @@
 import type {
   ButtonHTMLAttributes,
   FocusEvent,
-  KeyboardEvent,
   MouseEvent,
-  PointerEvent,
   ReactNode,
 } from "react";
 import { useId, useState } from "react";
@@ -23,23 +21,21 @@ export default function LUIButton({
   children,
   disabled = false,
   onBlur,
+  onClick,
   onFocus,
-  onKeyDown,
   onMouseEnter,
   onMouseLeave,
-  onPointerDown,
   type = "button",
   ...props
 }: ButtonProps) {
   const clipId = useId();
-  const playHoverSound = useLUISoundEffect({ type: "hover" });
+  const playClickSound = useLUISoundEffect({ type: "click" });
   const [isActive, setIsActive] = useState(false);
   const [isFocusVisible, setIsFocusVisible] = useState(false);
 
   function handleMouseEnter(event: MouseEvent<HTMLButtonElement>) {
     if (!disabled) {
       setIsActive(true);
-      playHoverSound();
     }
 
     onMouseEnter?.(event);
@@ -71,25 +67,12 @@ export default function LUIButton({
     onBlur?.(event);
   }
 
-  function handlePointerDown(event: PointerEvent<HTMLButtonElement>) {
-    onPointerDown?.(event);
-
-    if (!disabled && !event.defaultPrevented && event.button === 0) {
-      playHoverSound();
+  function handleClick(event: MouseEvent<HTMLButtonElement>) {
+    if (!disabled && !event.defaultPrevented) {
+      playClickSound();
     }
-  }
 
-  function handleKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
-    onKeyDown?.(event);
-
-    if (
-      !disabled &&
-      !event.defaultPrevented &&
-      !event.repeat &&
-      (event.key === "Enter" || event.key === " ")
-    ) {
-      playHoverSound();
-    }
+    onClick?.(event);
   }
 
   return (
@@ -98,11 +81,10 @@ export default function LUIButton({
       type={type}
       disabled={disabled}
       onBlur={handleBlur}
+      onClick={handleClick}
       onFocus={handleFocus}
-      onKeyDown={handleKeyDown}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onPointerDown={handlePointerDown}
       {...stylex.props(
         styles.root,
         animationStyles.root,
@@ -316,7 +298,7 @@ const styles = stylex.create({
     vectorEffect: "non-scaling-stroke",
   },
   innerShape: {
-    fill: colorVars.darkSurfaceBackground,
+    fill: colorVars.cardBackround,
   },
   label: {
     paddingBlock: 8,
@@ -329,7 +311,7 @@ const styles = stylex.create({
     fontSize: 13,
     fontWeight: 700,
     justifyContent: "center",
-    letterSpacing: 0,
+    letterSpacing: "var(--lui-letter-spacing)",
     lineHeight: 1,
     pointerEvents: "none",
     position: "relative",

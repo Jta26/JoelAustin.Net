@@ -1,95 +1,138 @@
 import * as stylex from "@stylexjs/stylex";
 
-import LUIButton from "./components/LUIButton";
-import LUICard from "./components/LUICard";
+import { LUIAnimationTrackerProvider } from "./animation/LUIAnimationTrackerProvider";
+import AboutCard from "./components/AboutCard";
+import LUIFade from "./components/LUIFade";
 import LUIHypercube from "./components/LUIHypercube";
+import LUITitle from "./components/LUITitle";
+import SocialIcons from "./components/SocialIcons";
 import { colorVars, languageUITheme } from "./styles/theme.stylex";
+
+const hypercubeFadeDelayMs = 1645;
 
 export function App() {
   return (
     <div {...stylex.props(languageUITheme)}>
-      <div {...stylex.props(styles.themeRoot)}>
-        <nav {...stylex.props(styles.nav)}>
-          <LUIButton>Home</LUIButton>
-          <LUIButton>About</LUIButton>
-        </nav>
-        <main {...stylex.props(styles.shell)} aria-label="Site boilerplate">
-          <div {...stylex.props(styles.hypercubeLayer)}>
-            <LUIHypercube xstyle={styles.cube} />
+      <div {...stylex.props(styles.themeRoot, styles.homeThemeRoot)}>
+        <LUIAnimationTrackerProvider>
+          <div aria-hidden {...stylex.props(styles.hypercubeLayer)}>
+            <LUIFade
+              animationId="hypercube"
+              delayMs={hypercubeFadeDelayMs}
+              durationMs={6000}
+              timing="chunky"
+              xstyle={styles.cube}
+            >
+              <LUIHypercube xstyle={styles.cube} />
+            </LUIFade>
           </div>
-          <LUICard title="Lorem ipsum dolor" xstyle={styles.card}>
-            <p {...stylex.props(styles.cardText)}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              vitae luctus augue. Donec vel ligula at arcu fermentum facilisis
-              sed non lorem.
-            </p>
-          </LUICard>
-        </main>
+        </LUIAnimationTrackerProvider>
+        <LUIAnimationTrackerProvider>
+          <SocialIcons />
+        </LUIAnimationTrackerProvider>
+        <LUIAnimationTrackerProvider>
+          <main {...stylex.props(styles.homeShell)}>
+            <section
+              aria-labelledby="intro-title"
+              {...stylex.props(styles.hero)}
+            >
+              <LUITitle
+                eyebrow="Frontend Software Engineer"
+                headingId="intro-title"
+                title="Joel Austin"
+              />
+              <AboutCard xstyle={styles.profileCard} />
+            </section>
+          </main>
+        </LUIAnimationTrackerProvider>
       </div>
     </div>
   );
 }
 
 const styles = stylex.create({
-  nav: {
-    display: "flex",
-    flexDirection: "row",
-    paddingBlockStart: 10,
-    paddingInlineStart: 10,
+  cube: {
+    height: "100%",
     width: "100%",
   },
-  shell: {
-    overflow: "hidden",
-    paddingBlock: 72,
-    paddingInline: 24,
-    placeItems: "center",
+  hero: {
+    gap: {
+      default: 0,
+      "@media (max-width: 700px)": 44,
+    },
+    alignItems: {
+      default: "center",
+      "@media (max-width: 700px)": "start",
+    },
+    blockSize: "100%",
     display: "grid",
-    isolation: "isolate",
+    gridTemplateColumns: "minmax(0, 1fr)",
+    minBlockSize: 0,
     position: "relative",
-    minHeight: "100dvh",
-  },
-  card: {
     zIndex: 1,
-    maxWidth: 420,
-    width: "min(100%, 420px)",
   },
-  cardText: {
-    margin: 0,
-    color: colorVars.secondaryTextColor,
-    fontSize: 14,
-    lineHeight: 1.6,
-  },
-  themeRoot: {
-    backgroundColor: colorVars.darkSurfaceBackground,
-    color: colorVars.primaryTextColor,
-    fontFamily:
-      'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-    minHeight: "100dvh",
-  },
-  cube: {
-    height: {
-      default: "min(90vw, 820px)",
-      "@media (max-width: 700px)": "min(118vw, 660px)",
+  homeShell: {
+    paddingBlock: {
+      default: 22,
+      "@media (max-width: 700px)": 36,
     },
-    width: {
-      default: "min(90vw, 820px)",
-      "@media (max-width: 700px)": "min(118vw, 660px)",
+    paddingInline: {
+      default: 48,
+      "@media (max-width: 700px)": 20,
     },
+    blockSize: "100%",
+    display: "grid",
+    minBlockSize: 0,
+  },
+  homeThemeRoot: {
+    overflow: {
+      default: "hidden",
+      "@media (max-width: 700px)": "auto",
+    },
+    blockSize: "100dvh",
   },
   hypercubeLayer: {
-    insetBlockStart: {
-      default: "50%",
-      "@media (max-width: 700px)": "44%",
-    },
-    insetInlineStart: {
-      default: "none",
-      "@media (max-width: 700px)": "50%",
-    },
+    blockSize: "100vmax",
+    inlineSize: "100vmax",
+    insetBlockStart: "50%",
+    insetInlineStart: "calc(50% - 6vmax)",
     pointerEvents: "none",
-    position: "absolute",
-    transform: {
-      default: "translateY(-50%)",
-      "@media (max-width: 700px)": "translate(-50%, -50%)",
+    position: "fixed",
+    transform: "translate(-50%, -50%)",
+  },
+  profileCard: {
+    insetBlockEnd: {
+      default: 0,
+      "@media (max-width: 700px)": "auto",
     },
+    insetInlineEnd: {
+      default: 0,
+      "@media (max-width: 700px)": "auto",
+    },
+    justifySelf: {
+      default: "auto",
+      "@media (max-width: 700px)": "end",
+    },
+    position: {
+      default: "absolute",
+      "@media (max-width: 700px)": "relative",
+    },
+    maxWidth: {
+      default: 360,
+      "@media (max-width: 700px)": 300,
+    },
+    width: "min(100%, 360px)",
+  },
+  themeRoot: {
+    "--lui-letter-spacing": "0.025em",
+    backgroundColor: colorVars.darkSurfaceBackground,
+    color: colorVars.primaryTextColor,
+    display: "grid",
+    fontFamily:
+      '"Pixelify Sans", "Noto Sans", ui-sans-serif, system-ui, sans-serif',
+    gridTemplateRows: "auto minmax(0, 1fr)",
+    position: "relative",
+    minHeight: "100dvh",
+    overflowX: "hidden",
   },
 });

@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
 let sharedAudioContext: AudioContext | null = null;
+let sharedResumePromise: Promise<void> | null = null;
 
 type AudioWindow = Window &
   typeof globalThis & {
@@ -25,6 +26,26 @@ function getAudioContext() {
   return sharedAudioContext;
 }
 
+function canResumeAudioContext() {
+  if (typeof navigator === "undefined" || navigator.userActivation === undefined) {
+    return true;
+  }
+
+  return navigator.userActivation.isActive;
+}
+
+function resumeAudioContext(audioContext: AudioContext) {
+  if (audioContext.state !== "suspended") {
+    return Promise.resolve();
+  }
+
+  sharedResumePromise ??= audioContext.resume().finally(() => {
+    sharedResumePromise = null;
+  });
+
+  return sharedResumePromise;
+}
+
 function connectEnvelope(
   audioContext: AudioContext,
   startTime: number,
@@ -42,10 +63,10 @@ function connectEnvelope(
 }
 
 type LUISoundEffectOptions = {
-  type: "hover";
+  type: "click";
 };
 
-function playHoverEffect(audioContext: AudioContext) {
+function playClickEffect(audioContext: AudioContext) {
   const startTime = audioContext.currentTime;
   const duration = 0.095;
   const output = connectEnvelope(audioContext, startTime, duration, 0.09);
@@ -104,8 +125,8 @@ function playHoverEffect(audioContext: AudioContext) {
 }
 
 function playSoundEffect(audioContext: AudioContext, type: LUISoundEffectOptions["type"]) {
-  if (type === "hover") {
-    playHoverEffect(audioContext);
+  if (type === "click") {
+    playClickEffect(audioContext);
   }
 }
 
@@ -118,9 +139,19 @@ export function useLUISoundEffect({ type }: LUISoundEffectOptions) {
     }
 
     if (audioContext.state === "suspended") {
-      void audioContext.resume().then(() => {
-        playSoundEffect(audioContext, type);
-      });
+      if (!canResumeAudioContext()) {
+        return;
+      }
+
+      void resumeAudioContext(audioContext)
+        .then(() => {
+          if (audioContext.state === "running") {
+            playSoundEffect(audioContext, type);
+          }
+        })
+        .catch(() => {
+          // Audio is progressive enhancement, so failed unlocks stay silent.
+        });
 
       return;
     }

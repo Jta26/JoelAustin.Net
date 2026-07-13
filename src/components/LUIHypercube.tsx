@@ -170,7 +170,7 @@ const rotateHypercube = stylex.keyframes({
 const styles = stylex.create({
   cube: {
     animationDuration: {
-      default: "24s",
+      default: "86s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
