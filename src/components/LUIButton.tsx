@@ -6,6 +6,7 @@ import type {
 } from "react";
 import { useId, useState } from "react";
 import * as stylex from "@stylexjs/stylex";
+import type { StyleXStyles } from "@stylexjs/stylex";
 
 import { useLUISoundEffect } from "../hooks/useLUISoundEffect";
 import { colorVars } from "../styles/theme.stylex";
@@ -15,17 +16,21 @@ type ButtonProps = Omit<
   "children" | "className" | "style"
 > & {
   children: ReactNode;
+  labelXstyle?: StyleXStyles;
+  xstyle?: StyleXStyles;
 };
 
 export default function LUIButton({
   children,
   disabled = false,
+  labelXstyle,
   onBlur,
   onClick,
   onFocus,
   onMouseEnter,
   onMouseLeave,
   type = "button",
+  xstyle,
   ...props
 }: ButtonProps) {
   const clipId = useId();
@@ -89,6 +94,7 @@ export default function LUIButton({
         styles.root,
         animationStyles.root,
         disabled && styles.disabled,
+        xstyle,
       )}
     >
       <svg
@@ -148,7 +154,7 @@ export default function LUIButton({
           )}
         />
       </svg>
-      <span {...stylex.props(styles.label)}>
+      <span {...stylex.props(styles.label, labelXstyle)}>
         <span {...stylex.props(styles.baseLabel)}>{children}</span>
         <span
           aria-hidden="true"
