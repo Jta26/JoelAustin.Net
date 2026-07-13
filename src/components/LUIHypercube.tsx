@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import * as stylex from "@stylexjs/stylex";
 import type {
   CSSProperties as StyleXCSSProperties,
@@ -17,15 +16,6 @@ type Edge = {
   x: number;
   y: number;
   z: number;
-};
-
-type EdgeStyle = CSSProperties & {
-  "--edge-length": string;
-  "--edge-rotate-y": string;
-  "--edge-rotate-z": string;
-  "--edge-x": string;
-  "--edge-y": string;
-  "--edge-z": string;
 };
 
 type LUIHypercubeXStyle = StyleXStyles<{
@@ -71,7 +61,19 @@ export default function LUIHypercube({
     >
       <div {...stylex.props(styles.cube)}>
         {edges.map((edge) => (
-          <span key={edge.id} style={getEdgeStyle(edge, outerSize)}>
+          <span
+            key={edge.id}
+            {...stylex.props(
+              styles.edgeWrapper(
+                `${(edge.length / outerSize).toFixed(5)}`,
+                `${edge.rotateY.toFixed(5)}rad`,
+                `${edge.rotateZ.toFixed(5)}rad`,
+                `${(edge.x / outerSize).toFixed(5)}`,
+                `${(edge.y / outerSize).toFixed(5)}`,
+                `${(edge.z / outerSize).toFixed(5)}`,
+              ),
+            )}
+          >
             <span {...stylex.props(styles.edge)} />
           </span>
         ))}
@@ -146,18 +148,6 @@ function createEdge(id: string, start: Vertex, end: Vertex): Edge {
   };
 }
 
-function getEdgeStyle(edge: Edge, outerSize: number): EdgeStyle {
-  return {
-    "--edge-length": `${(edge.length / outerSize).toFixed(5)}`,
-    "--edge-rotate-y": `${edge.rotateY.toFixed(5)}rad`,
-    "--edge-rotate-z": `${edge.rotateZ.toFixed(5)}rad`,
-    "--edge-x": `${(edge.x / outerSize).toFixed(5)}`,
-    "--edge-y": `${(edge.y / outerSize).toFixed(5)}`,
-    "--edge-z": `${(edge.z / outerSize).toFixed(5)}`,
-    display: "contents",
-  };
-}
-
 const rotateHypercube = stylex.keyframes({
   "0%": {
     transform: "rotateX(58deg) rotateY(0deg) rotateZ(38deg)",
@@ -184,6 +174,22 @@ const styles = stylex.create({
     top: "50%",
     width: 1,
   },
+  edgeWrapper: (
+    edgeLength: string,
+    edgeRotateY: string,
+    edgeRotateZ: string,
+    edgeX: string,
+    edgeY: string,
+    edgeZ: string,
+  ) => ({
+    "--edge-length": edgeLength,
+    "--edge-rotate-y": edgeRotateY,
+    "--edge-rotate-z": edgeRotateZ,
+    "--edge-x": edgeX,
+    "--edge-y": edgeY,
+    "--edge-z": edgeZ,
+    display: "contents",
+  }),
   edge: {
     backgroundColor: colorVars.primaryBlue,
     boxShadow:
