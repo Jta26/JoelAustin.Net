@@ -239,10 +239,7 @@ export default function LUICard({
       )}
     >
       <div
-        {...stylex.props(
-          styles.root,
-          hasProfileHeader && styles.profileRoot,
-        )}
+        {...stylex.props(styles.root, hasProfileHeader && styles.profileRoot)}
       >
         {resolvedHeader}
         <div
@@ -289,8 +286,8 @@ const cardWipeRight = stylex.keyframes({
 
 const styles = stylex.create({
   body: {
-    marginBlock: 18,
-    marginInline: 20,
+    marginBlock: "1.125rem",
+    marginInline: "1.25rem",
   },
   bodyClip: {
     overflow: "visible",
@@ -330,38 +327,38 @@ const styles = stylex.create({
   },
   header: {
     overflow: "hidden",
-    paddingBlock: 12,
-    paddingInline: 16,
+    paddingBlock: "0.75rem",
+    paddingInline: "1rem",
     alignItems: "start",
     backgroundImage:
       "linear-gradient(90deg, rgba(115, 221, 255, .2) 0%, rgba(36, 168, 255, .1) 48%, rgba(5, 9, 20, 0) 100%)",
     borderBlockEndColor: "rgba(115, 221, 255, .38)",
     borderBlockEndStyle: "solid",
-    borderBlockEndWidth: 1,
+    borderBlockEndWidth: "0.0625rem",
     boxShadow:
-      "inset 0 1px 0 rgba(255, 255, 255, .16), inset 0 -1px 0 rgba(36, 168, 255, .2)",
-    columnGap: 14,
+      "inset 0 0.0625rem 0 rgba(255, 255, 255, .16), inset 0 -0.0625rem 0 rgba(36, 168, 255, .2)",
+    columnGap: "0.875rem",
     display: "grid",
     gridTemplateColumns: "1fr",
-    minBlockSize: 52,
+    minBlockSize: "3.25rem",
     position: "relative",
   },
   headerLine: {
     backgroundColor: colorVars.primaryBlue,
-    boxShadow: "0 0 12px rgba(115, 221, 255, .38)",
+    boxShadow: "0 0 0.75rem rgba(115, 221, 255, .38)",
     inlineSize: "100%",
     maskImage: "linear-gradient(90deg, #000 0%, #000 64%, transparent 100%)",
-    height: 1,
+    height: "0.0625rem",
   },
   headerTick: {
     backgroundColor: colorVars.primaryBlue,
-    blockSize: 14,
-    boxShadow: "0 0 10px rgba(115, 221, 255, .55)",
+    blockSize: "0.875rem",
+    boxShadow: "0 0 0.625rem rgba(115, 221, 255, .55)",
     clipPath: "polygon(0 0, 100% 0, 100% 72%, 58% 100%, 0 100%)",
-    inlineSize: 4,
+    inlineSize: "0.25rem",
   },
   headerTitleBlock: {
-    gap: 8,
+    gap: "0.5rem",
     alignContent: "start",
     alignSelf: "start",
     display: "grid",
@@ -372,13 +369,13 @@ const styles = stylex.create({
   },
   headerTitleRail: {
     alignItems: "center",
-    columnGap: 8,
+    columnGap: "0.5rem",
     display: "grid",
     gridTemplateColumns: "auto minmax(0, 1fr)",
     minInlineSize: 0,
   },
   profileHeaderOffset: {
-    paddingInlineStart: 78,
+    paddingInlineStart: "4.875rem",
   },
   profilePhoto: {
     borderRadius: "50%",
@@ -399,7 +396,7 @@ const styles = stylex.create({
     inset: 0,
     borderRadius: "50%",
     backgroundColor: colorVars.primaryBlue,
-    filter: "drop-shadow(0 0 8px rgba(115, 221, 255, .46))",
+    filter: "drop-shadow(0 0 0.5rem rgba(115, 221, 255, .46))",
     maskImage:
       "radial-gradient(circle at center, transparent 0 69%, #000 70% 72%, transparent 73% 100%)",
     pointerEvents: "none",
@@ -411,11 +408,11 @@ const styles = stylex.create({
     backgroundColor: colorVars.darkSurfaceBackground,
     backgroundImage:
       "radial-gradient(circle at 28% 24%, rgba(216, 243, 255, .28), transparent 32%), linear-gradient(135deg, rgba(115, 221, 255, .32), rgba(36, 168, 255, .08))",
-    blockSize: 112,
+    blockSize: "7rem",
     boxShadow:
-      "0 0 18px rgba(115, 221, 255, .24), inset 0 0 0 3px rgba(5, 9, 20, .74), inset 0 0 18px rgba(36, 168, 255, .22)",
+      "0 0 1.125rem rgba(115, 221, 255, .24), inset 0 0 0 0.1875rem rgba(5, 9, 20, .74), inset 0 0 1.125rem rgba(36, 168, 255, .22)",
     boxSizing: "border-box",
-    inlineSize: 112,
+    inlineSize: "7rem",
     insetBlockStart: 0,
     insetInlineStart: 0,
     position: "absolute",
@@ -426,9 +423,9 @@ const styles = stylex.create({
     overflow: "visible",
   },
   profileRevealRoot: {
-    paddingBlockEnd: 8,
-    paddingBlockStart: 64,
-    paddingInlineStart: 64,
+    paddingBlockEnd: "0.5rem",
+    paddingBlockStart: "4rem",
+    paddingInlineStart: "4rem",
   },
   revealRoot: {
     overflow: "visible",
@@ -438,16 +435,16 @@ const styles = stylex.create({
   },
   root: {
     borderColor: colorVars.primaryBlue,
-    borderRadius: "clamp(6px, 2.6%, 14px)",
+    borderRadius: "clamp(0.375rem, 2.6%, 0.875rem)",
     borderStyle: "solid",
-    borderWidth: 1,
+    borderWidth: "0.0625rem",
     cornerShape: "squircle",
     overflow: "hidden",
     alignContent: "start",
     alignSelf: "start",
     backgroundColor: colorVars.cardBackround,
     boxShadow:
-      "inset 0 0 0 1px rgba(115, 221, 255, .1), 0 0 24px rgba(36, 168, 255, .12)",
+      "inset 0 0 0 0.0625rem rgba(115, 221, 255, .1), 0 0 1.5rem rgba(36, 168, 255, .12)",
     color: colorVars.primaryTextColor,
     display: "grid",
     position: "relative",
@@ -456,7 +453,7 @@ const styles = stylex.create({
   title: {
     margin: 0,
     color: colorVars.primaryTextColor,
-    fontSize: 13,
+    fontSize: "0.8125rem",
     fontWeight: 700,
     letterSpacing: "var(--lui-letter-spacing)",
     lineHeight: 1.15,

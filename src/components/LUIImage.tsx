@@ -55,15 +55,15 @@ const styles = stylex.create({
   root: {
     margin: 0,
     borderColor: colorVars.primaryBlue,
-    borderRadius: "clamp(5px, 2%, 10px)",
+    borderRadius: "clamp(0.3125rem, 2%, 0.625rem)",
     borderStyle: "solid",
-    borderWidth: 1,
+    borderWidth: "0.0625rem",
     cornerShape: "squircle",
     overflow: "hidden",
     aspectRatio: "4 / 3",
     backgroundColor: colorVars.darkSurfaceBackground,
     boxShadow:
-      "0 0 10px rgba(115, 221, 255, .2), inset 0 0 12px rgba(36, 168, 255, .08)",
+      "0 0 0.625rem rgba(115, 221, 255, .2), inset 0 0 0.75rem rgba(36, 168, 255, .08)",
     display: "block",
   },
 });

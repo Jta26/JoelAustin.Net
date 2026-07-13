@@ -169,10 +169,10 @@ const styles = stylex.create({
     position: "absolute",
     transform: "rotateX(58deg) rotateY(0deg) rotateZ(38deg)",
     transformStyle: "preserve-3d",
-    height: 1,
+    height: "0.0625rem",
     left: "50%",
     top: "50%",
-    width: 1,
+    width: "0.0625rem",
   },
   edgeWrapper: (
     edgeLength: string,
@@ -193,14 +193,14 @@ const styles = stylex.create({
   edge: {
     backgroundColor: colorVars.primaryBlue,
     boxShadow:
-      "0 0 8px rgba(115, 221, 255, .78), 0 0 18px rgba(36, 168, 255, .34)",
+      "0 0 0.5rem rgba(115, 221, 255, .78), 0 0 1.125rem rgba(36, 168, 255, .34)",
     display: "block",
     position: "absolute",
     transform:
       "translate3d(calc(var(--hypercube-radius) * var(--edge-x)), calc(var(--hypercube-radius) * var(--edge-y)), calc(var(--hypercube-radius) * var(--edge-z))) rotateZ(var(--edge-rotate-z)) rotateY(var(--edge-rotate-y))",
     transformOrigin: "0 50%",
     transformStyle: "preserve-3d",
-    height: 2,
+    height: "0.125rem",
     left: 0,
     top: 0,
     width: "calc(var(--hypercube-radius) * var(--edge-length))",
@@ -208,13 +208,13 @@ const styles = stylex.create({
   root: {
     "--hypercube-radius": "min(20cqw, 20cqh)",
     containerType: "size",
-    filter: "drop-shadow(0 0 18px rgba(36, 168, 255, .4))",
+    filter: "drop-shadow(0 0 1.125rem rgba(36, 168, 255, .4))",
     opacity: 0.5,
-    perspective: "620px",
+    perspective: "38.75rem",
     perspectiveOrigin: "50% 50%",
     position: "relative",
     transformStyle: "preserve-3d",
-    height: "min(72dvh, 420px)",
-    width: "min(92vw, 560px)",
+    height: "min(72dvh, 26.25rem)",
+    width: "min(92vw, 35rem)",
   },
 });

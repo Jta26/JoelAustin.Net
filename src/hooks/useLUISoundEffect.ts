@@ -27,7 +27,10 @@ function getAudioContext() {
 }
 
 function canResumeAudioContext() {
-  if (typeof navigator === "undefined" || navigator.userActivation === undefined) {
+  if (
+    typeof navigator === "undefined" ||
+    navigator.userActivation === undefined
+  ) {
     return true;
   }
 
@@ -124,7 +127,10 @@ function playClickEffect(audioContext: AudioContext) {
   };
 }
 
-function playSoundEffect(audioContext: AudioContext, type: LUISoundEffectOptions["type"]) {
+function playSoundEffect(
+  audioContext: AudioContext,
+  type: LUISoundEffectOptions["type"],
+) {
   if (type === "click") {
     playClickEffect(audioContext);
   }

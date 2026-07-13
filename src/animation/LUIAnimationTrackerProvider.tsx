@@ -1,11 +1,5 @@
 import type { ReactNode } from "react";
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useReducer,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
 
 import {
   animationTrackerReducer,
@@ -75,15 +69,14 @@ export function LUIAnimationTrackerProvider({
     return () => {
       window.clearTimeout(timeout);
     };
-  }, [
-    nextScheduledItem,
-    shouldCompleteImmediately,
-    state.sequenceStartedAtMs,
-  ]);
+  }, [nextScheduledItem, shouldCompleteImmediately, state.sequenceStartedAtMs]);
 
-  const registerItem = useCallback((id: string, order: number, durationMs: number) => {
-    dispatch({ durationMs, id, order, type: "register" });
-  }, []);
+  const registerItem = useCallback(
+    (id: string, order: number, durationMs: number) => {
+      dispatch({ durationMs, id, order, type: "register" });
+    },
+    [],
+  );
 
   const unregisterItem = useCallback((id: string) => {
     dispatch({ id, type: "unregister" });

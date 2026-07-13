@@ -7,7 +7,7 @@ const languageUIColorValues = {
   primaryTextColor: "#d8f3ff",
   secondaryBlue: "#24a8ff",
   secondaryTextColor: "#a8b8c8",
-  cardBackround: "#050914DF"
+  cardBackround: "#050914DF",
 } as const;
 
 export const colorVars = stylex.defineVars(languageUIColorValues);

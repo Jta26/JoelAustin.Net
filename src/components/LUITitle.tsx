@@ -47,7 +47,7 @@ const styles = stylex.create({
   eyebrow: {
     margin: 0,
     color: colorVars.primaryBlue,
-    fontSize: 13,
+    fontSize: "0.8125rem",
     fontWeight: 700,
     letterSpacing: "var(--lui-letter-spacing)",
     lineHeight: 1,
@@ -56,15 +56,15 @@ const styles = stylex.create({
   root: {
     display: "grid",
     justifyItems: "start",
-    maxWidth: 560,
+    maxWidth: "35rem",
   },
   title: {
-    marginBlock: 10,
+    marginBlock: "0.625rem",
     marginInline: 0,
     color: colorVars.primaryTextColor,
     fontSize: {
-      default: 64,
-      "@media (max-width: 700px)": 44,
+      default: "4rem",
+      "@media (max-width: 43.75rem)": "2.75rem",
     },
     fontWeight: 700,
     letterSpacing: "var(--lui-letter-spacing)",

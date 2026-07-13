@@ -101,51 +101,51 @@ function SocialIcon({ name }: { name: SocialIconName }) {
 
 const styles = stylex.create({
   nav: {
-    gap: 8,
-    paddingInline: 10,
+    gap: "0.5rem",
+    paddingInline: "0.625rem",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "flex-end",
-    paddingBlockStart: 10,
+    paddingBlockStart: "0.625rem",
     position: "relative",
     zIndex: 2,
     width: "100%",
   },
   navButtonContent: {
-    gap: 7,
+    gap: "0.4375rem",
     alignItems: "center",
     display: "inline-flex",
   },
   navLabel: {
     display: {
       default: "inline",
-      "@media (max-width: 700px)": "none",
+      "@media (max-width: 43.75rem)": "none",
     },
   },
   navIcon: {
     blockSize: {
-      default: 14,
-      "@media (max-width: 700px)": 16,
+      default: "0.875rem",
+      "@media (max-width: 43.75rem)": "1rem",
     },
     color: "currentColor",
     flexShrink: 0,
     inlineSize: {
-      default: 14,
-      "@media (max-width: 700px)": 16,
+      default: "0.875rem",
+      "@media (max-width: 43.75rem)": "1rem",
     },
   },
   mobileIconButton: {
     paddingInline: {
-      default: 32,
-      "@media (max-width: 700px)": 18,
+      default: "2rem",
+      "@media (max-width: 43.75rem)": "1.125rem",
     },
   },
   mobileIconButtonLabel: {
     minWidth: {
-      default: 116,
-      "@media (max-width: 700px)": 28,
+      default: "7.25rem",
+      "@media (max-width: 43.75rem)": "1.75rem",
     },
   },
 });

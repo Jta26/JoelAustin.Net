@@ -6,6 +6,7 @@ import LUIFade from "./components/LUIFade";
 import LUIHypercube from "./components/LUIHypercube";
 import LUITitle from "./components/LUITitle";
 import SocialIcons from "./components/SocialIcons";
+import { layoutConsts } from "./styles/layout-consts.stylex";
 import { colorVars, languageUITheme } from "./styles/theme.stylex";
 
 const hypercubeFadeDelayMs = 1645;
@@ -58,19 +59,19 @@ const styles = stylex.create({
   hero: {
     gap: {
       default: 0,
-      "@media (max-width: 700px)": 44,
+      [layoutConsts.compactScreen]: "2.75rem",
     },
     alignContent: {
       default: "normal",
-      "@media (max-width: 700px)": "start",
+      [layoutConsts.compactScreen]: "start",
     },
     alignItems: {
       default: "center",
-      "@media (max-width: 700px)": "start",
+      [layoutConsts.compactScreen]: "start",
     },
     blockSize: {
       default: "100%",
-      "@media (max-width: 700px)": "auto",
+      [layoutConsts.compactScreen]: "auto",
     },
     display: "grid",
     gridTemplateColumns: "minmax(0, 1fr)",
@@ -80,20 +81,20 @@ const styles = stylex.create({
   },
   homeShell: {
     paddingBlock: {
-      default: 22,
-      "@media (max-width: 700px)": 36,
+      default: "1.375rem",
+      [layoutConsts.compactScreen]: "2.25rem",
     },
     paddingInline: {
-      default: 48,
-      "@media (max-width: 700px)": 20,
+      default: "3rem",
+      [layoutConsts.compactScreen]: "1.25rem",
     },
     alignContent: {
       default: "normal",
-      "@media (max-width: 700px)": "start",
+      [layoutConsts.compactScreen]: "start",
     },
     blockSize: {
       default: "100%",
-      "@media (max-width: 700px)": "auto",
+      [layoutConsts.compactScreen]: "auto",
     },
     display: "grid",
     minBlockSize: 0,
@@ -101,22 +102,25 @@ const styles = stylex.create({
   homeThemeRoot: {
     overflow: {
       default: "hidden",
-      "@media (max-width: 700px)": "visible",
+      [layoutConsts.compactScreen]: "visible",
     },
     blockSize: {
       default: "100dvh",
-      "@media (max-width: 700px)": "auto",
+      [layoutConsts.compactScreen]: "auto",
     },
     minBlockSize: {
       default: "auto",
-      "@media (max-width: 700px)": "100svh",
+      [layoutConsts.compactScreen]: "100svh",
     },
   },
   hypercubeLayer: {
-    blockSize: "100vmax",
-    inlineSize: "100vmax",
+    blockSize: "max(90dvh, 90vw)",
+    inlineSize: "max(90dvh, 90vw)",
     insetBlockStart: "50%",
-    insetInlineStart: "calc(50% - 6vmax)",
+    insetInlineStart: {
+      default: "calc(50% - 5rem)",
+      [layoutConsts.compactScreen]: "50%",
+    },
     pointerEvents: "none",
     position: "fixed",
     transform: "translate(-50%, -50%)",
@@ -124,25 +128,25 @@ const styles = stylex.create({
   profileCard: {
     insetBlockEnd: {
       default: 0,
-      "@media (max-width: 700px)": "auto",
+      [layoutConsts.compactScreen]: "auto",
     },
     insetInlineEnd: {
       default: 0,
-      "@media (max-width: 700px)": "auto",
+      [layoutConsts.compactScreen]: "auto",
     },
     justifySelf: {
       default: "auto",
-      "@media (max-width: 700px)": "end",
+      [layoutConsts.compactScreen]: "end",
     },
     position: {
       default: "absolute",
-      "@media (max-width: 700px)": "relative",
+      [layoutConsts.compactScreen]: "relative",
     },
     maxWidth: {
-      default: 360,
-      "@media (max-width: 700px)": 300,
+      default: "22.5rem",
+      [layoutConsts.compactScreen]: "18.75rem",
     },
-    width: "min(100%, 360px)",
+    width: "min(100%, 22.5rem)",
   },
   themeRoot: {
     "--lui-letter-spacing": "0.025em",
@@ -152,12 +156,12 @@ const styles = stylex.create({
     fontFamily:
       '"Pixelify Sans", "Noto Sans", ui-sans-serif, system-ui, sans-serif',
     gridTemplateRows: "auto minmax(0, 1fr)",
-    paddingBlockEnd: "env(safe-area-inset-bottom, 0px)",
-    paddingBlockStart: "env(safe-area-inset-top, 0px)",
+    paddingBlockEnd: "env(safe-area-inset-bottom, 0)",
+    paddingBlockStart: "env(safe-area-inset-top, 0)",
     position: "relative",
     minHeight: {
       default: "100dvh",
-      "@media (max-width: 700px)": "100svh",
+      [layoutConsts.compactScreen]: "100svh",
     },
     overflowX: "hidden",
   },

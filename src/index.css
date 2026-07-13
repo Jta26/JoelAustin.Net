@@ -4,20 +4,39 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-padding-block-start: env(safe-area-inset-top, 0px);
+  scroll-padding-block-start: env(safe-area-inset-top, 0);
+}
+
+html {
+  background-color: #050914;
+  font-size: 100%;
+}
+
+@media (min-width: 80rem) and (min-height: 45rem) {
+  html {
+    font-size: 106.25%;
+  }
+}
+
+@media (min-width: 112.5rem) and (min-height: 52rem) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+@media (min-width: 150rem) and (min-height: 60rem) {
+  html {
+    font-size: 118.75%;
+  }
 }
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  background-color: #050914;
-}
-
 html,
 body {
-  min-width: 320px;
+  min-width: 20rem;
   min-height: 100%;
   margin: 0;
   background-color: #050914;
