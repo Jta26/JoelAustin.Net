@@ -64,7 +64,10 @@ const styles = stylex.create({
       default: "center",
       "@media (max-width: 700px)": "start",
     },
-    blockSize: "100%",
+    blockSize: {
+      default: "100%",
+      "@media (max-width: 700px)": "auto",
+    },
     display: "grid",
     gridTemplateColumns: "minmax(0, 1fr)",
     minBlockSize: 0,
@@ -80,16 +83,26 @@ const styles = stylex.create({
       default: 48,
       "@media (max-width: 700px)": 20,
     },
-    blockSize: "100%",
+    blockSize: {
+      default: "100%",
+      "@media (max-width: 700px)": "auto",
+    },
     display: "grid",
     minBlockSize: 0,
   },
   homeThemeRoot: {
     overflow: {
       default: "hidden",
+      "@media (max-width: 700px)": "visible",
+    },
+    blockSize: {
+      default: "100dvh",
       "@media (max-width: 700px)": "auto",
     },
-    blockSize: "100dvh",
+    minBlockSize: {
+      default: "auto",
+      "@media (max-width: 700px)": "100svh",
+    },
   },
   hypercubeLayer: {
     blockSize: "100vmax",
@@ -131,8 +144,13 @@ const styles = stylex.create({
     fontFamily:
       '"Pixelify Sans", "Noto Sans", ui-sans-serif, system-ui, sans-serif',
     gridTemplateRows: "auto minmax(0, 1fr)",
+    paddingBlockEnd: "env(safe-area-inset-bottom, 0px)",
+    paddingBlockStart: "env(safe-area-inset-top, 0px)",
     position: "relative",
-    minHeight: "100dvh",
+    minHeight: {
+      default: "100dvh",
+      "@media (max-width: 700px)": "100svh",
+    },
     overflowX: "hidden",
   },
 });
