@@ -1,3 +1,25 @@
+@font-face {
+  font-family: "LUI Japanese Pixel";
+  src:
+    url("/fonts/zpix.ttf") format("truetype"),
+    local("MS PGothic"),
+    local("MS Pゴシック"),
+    local("MS Gothic"),
+    local("MS ゴシック"),
+    local("Osaka");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  unicode-range:
+    U+3000-303F,
+    U+3040-30FF,
+    U+31F0-31FF,
+    U+3400-4DBF,
+    U+4E00-9FFF,
+    U+F900-FAFF,
+    U+FF00-FFEF;
+}
+
 :root {
   color-scheme: dark;
   font-synthesis: none;
@@ -44,4 +66,10 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+
+::selection {
+  background: #FFFFFF;
+  color: #000000;
 }

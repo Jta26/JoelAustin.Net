@@ -14,8 +14,8 @@ const profileSections = [
   },
   {
     items: [
-      "Typescript",
       { label: "StyleX", url: "https://stylexjs.com" },
+      "Typescript",
       "GraphQL",
       "React",
     ],

@@ -154,7 +154,7 @@ const styles = stylex.create({
     color: colorVars.primaryTextColor,
     display: "grid",
     fontFamily:
-      '"Pixelify Sans", "Noto Sans", ui-sans-serif, system-ui, sans-serif',
+      '"LUI Japanese Pixel", "Pixelify Sans", "Noto Sans", ui-sans-serif, system-ui, sans-serif',
     gridTemplateRows: "auto minmax(0, 1fr)",
     paddingBlockEnd: "env(safe-area-inset-bottom, 0)",
     paddingBlockStart: "env(safe-area-inset-top, 0)",
