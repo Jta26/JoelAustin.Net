@@ -281,6 +281,7 @@ const styles = stylex.create({
   },
   baseLabel: {
     color: colorVars.primaryTextColor,
+    transform: "translateY(.1em)",
   },
   contrastLabel: {
     inset: 0,
@@ -293,6 +294,7 @@ const styles = stylex.create({
     maskRepeat: "no-repeat, no-repeat",
     pointerEvents: "none",
     position: "absolute",
+    transform: "translateY(0.08em)",
   },
   fillPanel: {
     fill: "#FFFFFF",

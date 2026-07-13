@@ -9,24 +9,12 @@
 
 html {
   background-color: #050914;
-  font-size: 100%;
+  font-size: clamp(100%, calc(62.5% + 0.5vw), 150%);
 }
 
-@media (min-width: 80rem) and (min-height: 45rem) {
+@media (min-width: 80rem) and (min-aspect-ratio: 16 / 9) {
   html {
-    font-size: 106.25%;
-  }
-}
-
-@media (min-width: 112.5rem) and (min-height: 52rem) {
-  html {
-    font-size: 112.5%;
-  }
-}
-
-@media (min-width: 150rem) and (min-height: 60rem) {
-  html {
-    font-size: 118.75%;
+    font-size: clamp(106.25%, calc(68.75% + 0.625vw), 165%);
   }
 }
 
