@@ -289,11 +289,11 @@ const cardWipeRight = stylex.keyframes({
 
 const styles = stylex.create({
   body: {
-    paddingBlock: 18,
-    paddingInline: 20,
+    marginBlock: 18,
+    marginInline: 20,
   },
   bodyClip: {
-    overflow: "hidden",
+    overflow: "visible",
     minBlockSize: 0,
   },
   bodyReveal: {
