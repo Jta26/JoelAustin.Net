@@ -371,8 +371,7 @@ const styles = stylex.create({
     alignItems: "center",
     columnGap: "0.5rem",
     display: "grid",
-    gridTemplateColumns: "auto minmax(0, auto)",
-    justifyContent: "center",
+    gridTemplateColumns: "auto minmax(0, 1fr)",
     minInlineSize: 0,
   },
   profileHeaderOffset: {
