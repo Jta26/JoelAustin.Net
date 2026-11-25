@@ -674,7 +674,7 @@ const noiseTextureDataUrl = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3
 const styles = stylex.create({
   ambientGlow: {
     backgroundImage:
-      "radial-gradient(circle at 50% 50%, rgba(36, 168, 255, 0.16) 0%, rgba(36, 168, 255, 0.12) 12%, rgba(62, 186, 255, 0.08) 24%, rgba(115, 221, 255, 0.045) 36%, rgba(36, 168, 255, 0.02) 48%, rgba(36, 168, 255, 0.006) 58%, transparent 68%)",
+      "radial-gradient(circle at 50% 50%, rgba(36, 168, 255, 0.075) 0%, rgba(36, 168, 255, 0.055) 12%, rgba(62, 186, 255, 0.035) 24%, rgba(115, 221, 255, 0.018) 36%, rgba(36, 168, 255, 0.008) 48%, rgba(36, 168, 255, 0.003) 56%, transparent 64%)",
     insetBlockEnd: 0,
     insetBlockStart: 0,
     insetInlineEnd: 0,
@@ -691,9 +691,9 @@ const styles = stylex.create({
     insetInlineEnd: 0,
     insetInlineStart: 0,
     maskImage:
-      "radial-gradient(circle at 50% 50%, #000 0%, rgba(0, 0, 0, 0.7) 34%, transparent 66%)",
+      "radial-gradient(circle at 50% 50%, #000 0%, rgba(0, 0, 0, 0.65) 32%, transparent 62%)",
     mixBlendMode: "soft-light",
-    opacity: 0.16,
+    opacity: 0.1,
     pointerEvents: "none",
     position: "absolute",
   },
