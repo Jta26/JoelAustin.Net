@@ -2,36 +2,26 @@ import * as stylex from "@stylexjs/stylex";
 
 import { LUIAnimationTrackerProvider } from "./animation/LUIAnimationTrackerProvider";
 import AboutCard from "./components/AboutCard";
-import LUIFade from "./components/LUIFade";
-import LUIHypercube from "./components/LUIHypercube";
+import LUIOrbitalRings from "./components/LUIOrbitalRings";
 import LUITitle from "./components/LUITitle";
 import SocialIcons from "./components/SocialIcons";
 import { layoutConsts } from "./styles/layout-consts.stylex";
 import { colorVars, languageUITheme } from "./styles/theme.stylex";
-
-const hypercubeFadeDelayMs = 1645;
 
 export function App() {
   return (
     <div {...stylex.props(languageUITheme)}>
       <div {...stylex.props(styles.themeRoot, styles.homeThemeRoot)}>
         <LUIAnimationTrackerProvider>
-          <div aria-hidden {...stylex.props(styles.hypercubeLayer)}>
-            <LUIFade
-              animationId="hypercube"
-              delayMs={hypercubeFadeDelayMs}
-              durationMs={6000}
-              timing="chunky"
-              xstyle={styles.cube}
-            >
-              <LUIHypercube xstyle={styles.cube} />
-            </LUIFade>
-          </div>
-        </LUIAnimationTrackerProvider>
-        <LUIAnimationTrackerProvider>
           <SocialIcons />
         </LUIAnimationTrackerProvider>
         <LUIAnimationTrackerProvider>
+          <div aria-hidden {...stylex.props(styles.orbitalRingsLayer)}>
+            <LUIOrbitalRings
+              fadeOrder={1.7}
+              xstyle={styles.orbitalRings}
+            />
+          </div>
           <main {...stylex.props(styles.homeShell)}>
             <section
               aria-labelledby="intro-title"
@@ -52,10 +42,6 @@ export function App() {
 }
 
 const styles = stylex.create({
-  cube: {
-    height: "100%",
-    width: "100%",
-  },
   hero: {
     gap: {
       default: 0,
@@ -113,7 +99,11 @@ const styles = stylex.create({
       [layoutConsts.compactScreen]: "100svh",
     },
   },
-  hypercubeLayer: {
+  orbitalRings: {
+    height: "100%",
+    width: "100%",
+  },
+  orbitalRingsLayer: {
     blockSize: "max(90dvh, 90vw)",
     inlineSize: "max(90dvh, 90vw)",
     insetBlockStart: "50%",
