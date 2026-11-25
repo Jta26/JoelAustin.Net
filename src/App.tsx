@@ -2,36 +2,26 @@ import * as stylex from "@stylexjs/stylex";
 
 import { LUIAnimationTrackerProvider } from "./animation/LUIAnimationTrackerProvider";
 import AboutCard from "./components/AboutCard";
-import LUIFade from "./components/LUIFade";
 import LUIOrbitalRings from "./components/LUIOrbitalRings";
 import LUITitle from "./components/LUITitle";
 import SocialIcons from "./components/SocialIcons";
 import { layoutConsts } from "./styles/layout-consts.stylex";
 import { colorVars, languageUITheme } from "./styles/theme.stylex";
 
-const orbitalRingsFadeDelayMs = 1645;
-
 export function App() {
   return (
     <div {...stylex.props(languageUITheme)}>
       <div {...stylex.props(styles.themeRoot, styles.homeThemeRoot)}>
         <LUIAnimationTrackerProvider>
-          <div aria-hidden {...stylex.props(styles.orbitalRingsLayer)}>
-            <LUIFade
-              animationId="orbital-rings"
-              delayMs={orbitalRingsFadeDelayMs}
-              durationMs={6000}
-              timing="chunky"
-              xstyle={styles.orbitalRings}
-            >
-              <LUIOrbitalRings xstyle={styles.orbitalRings} />
-            </LUIFade>
-          </div>
-        </LUIAnimationTrackerProvider>
-        <LUIAnimationTrackerProvider>
           <SocialIcons />
         </LUIAnimationTrackerProvider>
         <LUIAnimationTrackerProvider>
+          <div aria-hidden {...stylex.props(styles.orbitalRingsLayer)}>
+            <LUIOrbitalRings
+              fadeOrder={1.7}
+              xstyle={styles.orbitalRings}
+            />
+          </div>
           <main {...stylex.props(styles.homeShell)}>
             <section
               aria-labelledby="intro-title"

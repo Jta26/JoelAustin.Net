@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 import * as stylex from "@stylexjs/stylex";
 import type {
   CSSProperties as StyleXCSSProperties,
@@ -6,6 +6,8 @@ import type {
 } from "@stylexjs/stylex";
 
 import { colorVars } from "../styles/theme.stylex";
+import LUIFade from "./LUIFade";
+import type { LUIWipeTiming } from "./LUIWipe.styles";
 
 type LUIOrbitalRingsXStyle = StyleXStyles<{
   height?: StyleXCSSProperties["height"];
@@ -13,6 +15,10 @@ type LUIOrbitalRingsXStyle = StyleXStyles<{
 }>;
 
 type LUIOrbitalRingsProps = {
+  animationId?: string;
+  fadeDurationMs?: number;
+  fadeOrder?: number;
+  timing?: LUIWipeTiming;
   xstyle?: LUIOrbitalRingsXStyle;
 };
 
@@ -26,7 +32,52 @@ type TickMark = {
   y2: number;
 };
 
+type RingPhaseDelays = {
+  crossSpin: string;
+  crossTumble: string;
+  innerSpin: string;
+  innerTumble: string;
+  midSpin: string;
+  midTumble: string;
+  outerSpin: string;
+  outerTumble: string;
+  primarySpin: string;
+  primaryTumble: string;
+};
+
 const CENTER = 500;
+
+const RING_DURATIONS_SEC = {
+  crossSpin: 145,
+  crossTumble: 125,
+  innerSpin: 96,
+  innerTumble: 88,
+  midSpin: 125,
+  midTumble: 105,
+  outerSpin: 240,
+  outerTumble: 210,
+  primarySpin: 170,
+  primaryTumble: 155,
+} as const;
+
+function randomNegativeDelay(durationSec: number): string {
+  return `${(-Math.random() * durationSec).toFixed(2)}s`;
+}
+
+function createRandomPhaseDelays(): RingPhaseDelays {
+  return {
+    crossSpin: randomNegativeDelay(RING_DURATIONS_SEC.crossSpin),
+    crossTumble: randomNegativeDelay(RING_DURATIONS_SEC.crossTumble),
+    innerSpin: randomNegativeDelay(RING_DURATIONS_SEC.innerSpin),
+    innerTumble: randomNegativeDelay(RING_DURATIONS_SEC.innerTumble),
+    midSpin: randomNegativeDelay(RING_DURATIONS_SEC.midSpin),
+    midTumble: randomNegativeDelay(RING_DURATIONS_SEC.midTumble),
+    outerSpin: randomNegativeDelay(RING_DURATIONS_SEC.outerSpin),
+    outerTumble: randomNegativeDelay(RING_DURATIONS_SEC.outerTumble),
+    primarySpin: randomNegativeDelay(RING_DURATIONS_SEC.primarySpin),
+    primaryTumble: randomNegativeDelay(RING_DURATIONS_SEC.primaryTumble),
+  };
+}
 
 function polarPoint(radius: number, angleDeg: number): [number, number] {
   const rad = (angleDeg * Math.PI) / 180;
@@ -90,26 +141,40 @@ const crossNode = (() => {
   return { cx, cy };
 })();
 
-export default function LUIOrbitalRings({ xstyle }: LUIOrbitalRingsProps) {
+export default function LUIOrbitalRings({
+  animationId = "orbital-rings",
+  fadeDurationMs = 6000,
+  fadeOrder,
+  timing = "chunky",
+  xstyle,
+}: LUIOrbitalRingsProps) {
   const baseId = useId();
+  const [phaseDelays] = useState<RingPhaseDelays>(createRandomPhaseDelays);
   const primaryHaloId = `lui-orbital-primary-${baseId}`;
   const midHaloId = `lui-orbital-mid-${baseId}`;
   const centerHaloId = `lui-orbital-center-${baseId}`;
   const crossHaloId = `lui-orbital-cross-${baseId}`;
 
-  return (
-    <div
-      role="img"
-      aria-label="Slowly rotating spherical orbital rings"
-      {...stylex.props(styles.root, xstyle)}
-    >
+  const ringsContent = (
+    <div {...stylex.props(styles.ringsStage)}>
       <div aria-hidden="true" {...stylex.props(styles.ambientGlow)} />
-
-      <div aria-hidden="true" {...stylex.props(styles.sphereScene)}>
-        <div {...stylex.props(styles.plane, styles.outerPlane)}>
+      <div aria-hidden="true" {...stylex.props(styles.ambientNoise)} />
+      <div aria-hidden="true" {...stylex.props(styles.sphereViewport)}>
+        <div {...stylex.props(styles.sphereScene)}>
+        <div
+          {...stylex.props(
+            styles.plane,
+            styles.outerPlane,
+            styles.phaseDelay(phaseDelays.outerTumble),
+          )}
+        >
           <svg
             viewBox="0 0 1000 1000"
-            {...stylex.props(styles.ringSvg, styles.spinOuter)}
+            {...stylex.props(
+              styles.ringSvg,
+              styles.spinOuter,
+              styles.phaseDelay(phaseDelays.outerSpin),
+            )}
           >
             <circle
               cx={CENTER}
@@ -140,10 +205,20 @@ export default function LUIOrbitalRings({ xstyle }: LUIOrbitalRingsProps) {
           </svg>
         </div>
 
-        <div {...stylex.props(styles.plane, styles.primaryPlane)}>
+        <div
+          {...stylex.props(
+            styles.plane,
+            styles.primaryPlane,
+            styles.phaseDelay(phaseDelays.primaryTumble),
+          )}
+        >
           <svg
             viewBox="0 0 1000 1000"
-            {...stylex.props(styles.ringSvg, styles.spinPrimary)}
+            {...stylex.props(
+              styles.ringSvg,
+              styles.spinPrimary,
+              styles.phaseDelay(phaseDelays.primarySpin),
+            )}
           >
             <defs>
               <radialGradient
@@ -206,10 +281,20 @@ export default function LUIOrbitalRings({ xstyle }: LUIOrbitalRingsProps) {
           </svg>
         </div>
 
-        <div {...stylex.props(styles.plane, styles.crossPlane)}>
+        <div
+          {...stylex.props(
+            styles.plane,
+            styles.crossPlane,
+            styles.phaseDelay(phaseDelays.crossTumble),
+          )}
+        >
           <svg
             viewBox="0 0 1000 1000"
-            {...stylex.props(styles.ringSvg, styles.spinCross)}
+            {...stylex.props(
+              styles.ringSvg,
+              styles.spinCross,
+              styles.phaseDelay(phaseDelays.crossSpin),
+            )}
           >
             <defs>
               <radialGradient
@@ -270,10 +355,20 @@ export default function LUIOrbitalRings({ xstyle }: LUIOrbitalRingsProps) {
           </svg>
         </div>
 
-        <div {...stylex.props(styles.plane, styles.midPlane)}>
+        <div
+          {...stylex.props(
+            styles.plane,
+            styles.midPlane,
+            styles.phaseDelay(phaseDelays.midTumble),
+          )}
+        >
           <svg
             viewBox="0 0 1000 1000"
-            {...stylex.props(styles.ringSvg, styles.spinMid)}
+            {...stylex.props(
+              styles.ringSvg,
+              styles.spinMid,
+              styles.phaseDelay(phaseDelays.midSpin),
+            )}
           >
             <defs>
               <radialGradient
@@ -333,10 +428,20 @@ export default function LUIOrbitalRings({ xstyle }: LUIOrbitalRingsProps) {
           </svg>
         </div>
 
-        <div {...stylex.props(styles.plane, styles.innerPlane)}>
+        <div
+          {...stylex.props(
+            styles.plane,
+            styles.innerPlane,
+            styles.phaseDelay(phaseDelays.innerTumble),
+          )}
+        >
           <svg
             viewBox="0 0 1000 1000"
-            {...stylex.props(styles.ringSvg, styles.spinInner)}
+            {...stylex.props(
+              styles.ringSvg,
+              styles.spinInner,
+              styles.phaseDelay(phaseDelays.innerSpin),
+            )}
           >
             <circle
               cx={CENTER}
@@ -420,6 +525,29 @@ export default function LUIOrbitalRings({ xstyle }: LUIOrbitalRingsProps) {
         </div>
       </div>
     </div>
+    </div>
+  );
+
+  return (
+    <div
+      role="img"
+      aria-label="Slowly rotating spherical orbital rings"
+      {...stylex.props(styles.root, xstyle)}
+    >
+      {fadeOrder !== undefined ? (
+        <LUIFade
+          animationId={animationId}
+          durationMs={fadeDurationMs}
+          order={fadeOrder}
+          timing={timing}
+          xstyle={styles.circlesFade}
+        >
+          {ringsContent}
+        </LUIFade>
+      ) : (
+        ringsContent
+      )}
+    </div>
   );
 }
 
@@ -496,10 +624,12 @@ const tumbleInner = stylex.keyframes({
   },
 });
 
+const noiseTextureDataUrl = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
+
 const styles = stylex.create({
   ambientGlow: {
     backgroundImage:
-      "radial-gradient(circle at 50% 50%, rgba(36, 168, 255, 0.16) 0%, rgba(115, 221, 255, 0.05) 36%, transparent 64%)",
+      "radial-gradient(circle at 50% 50%, rgba(36, 168, 255, 0.16) 0%, rgba(36, 168, 255, 0.12) 12%, rgba(62, 186, 255, 0.08) 24%, rgba(115, 221, 255, 0.045) 36%, rgba(36, 168, 255, 0.02) 48%, rgba(36, 168, 255, 0.006) 58%, transparent 68%)",
     insetBlockEnd: 0,
     insetBlockStart: 0,
     insetInlineEnd: 0,
@@ -507,12 +637,32 @@ const styles = stylex.create({
     pointerEvents: "none",
     position: "absolute",
   },
+  ambientNoise: {
+    backgroundImage: noiseTextureDataUrl,
+    backgroundRepeat: "repeat",
+    backgroundSize: "180px 180px",
+    insetBlockEnd: 0,
+    insetBlockStart: 0,
+    insetInlineEnd: 0,
+    insetInlineStart: 0,
+    maskImage:
+      "radial-gradient(circle at 50% 50%, #000 0%, rgba(0, 0, 0, 0.7) 34%, transparent 66%)",
+    mixBlendMode: "soft-light",
+    opacity: 0.16,
+    pointerEvents: "none",
+    position: "absolute",
+  },
+  circlesFade: {
+    "--lui-wipe-easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+    height: "100%",
+    width: "100%",
+  },
   corePlane: {
     transform: "translate(-50%, -50%) rotateX(54deg) rotateY(-14deg)",
   },
   crossPlane: {
     animationDuration: {
-      default: "54s",
+      default: "125s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
@@ -526,7 +676,7 @@ const styles = stylex.create({
   },
   innerPlane: {
     animationDuration: {
-      default: "38s",
+      default: "88s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
@@ -540,7 +690,7 @@ const styles = stylex.create({
   },
   midPlane: {
     animationDuration: {
-      default: "46s",
+      default: "105s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
@@ -575,7 +725,7 @@ const styles = stylex.create({
   },
   outerPlane: {
     animationDuration: {
-      default: "96s",
+      default: "210s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
@@ -587,6 +737,9 @@ const styles = stylex.create({
     transform:
       "translate(-50%, -50%) rotateZ(-10deg) rotateX(58deg) rotateY(-18deg)",
   },
+  phaseDelay: (animationDelay: string) => ({
+    animationDelay,
+  }),
   plane: {
     position: "absolute",
     transformStyle: "preserve-3d",
@@ -600,7 +753,7 @@ const styles = stylex.create({
   },
   primaryPlane: {
     animationDuration: {
-      default: "68s",
+      default: "155s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
@@ -614,6 +767,11 @@ const styles = stylex.create({
   },
   primaryStroke: {
     stroke: colorVars.primaryBlue,
+  },
+  ringsStage: {
+    position: "relative",
+    height: "100%",
+    width: "100%",
   },
   ringSvg: {
     overflow: "visible",
@@ -629,8 +787,6 @@ const styles = stylex.create({
     overflow: "visible",
     containerType: "size",
     opacity: 0.78,
-    perspective: "70rem",
-    perspectiveOrigin: "50% 50%",
     position: "relative",
     height: "min(72dvh, 26.25rem)",
     width: "min(92vw, 35rem)",
@@ -646,9 +802,17 @@ const styles = stylex.create({
     position: "absolute",
     transformStyle: "preserve-3d",
   },
+  sphereViewport: {
+    overflow: "visible",
+    perspective: "70rem",
+    perspectiveOrigin: "50% 50%",
+    position: "relative",
+    height: "100%",
+    width: "100%",
+  },
   spinCross: {
     animationDuration: {
-      default: "76s",
+      default: "145s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
@@ -660,7 +824,7 @@ const styles = stylex.create({
   },
   spinInner: {
     animationDuration: {
-      default: "52s",
+      default: "96s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
@@ -672,7 +836,7 @@ const styles = stylex.create({
   },
   spinMid: {
     animationDuration: {
-      default: "68s",
+      default: "125s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
@@ -684,7 +848,7 @@ const styles = stylex.create({
   },
   spinOuter: {
     animationDuration: {
-      default: "140s",
+      default: "240s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
@@ -696,7 +860,7 @@ const styles = stylex.create({
   },
   spinPrimary: {
     animationDuration: {
-      default: "92s",
+      default: "170s",
       "@media (prefers-reduced-motion: reduce)": "0s",
     },
     animationIterationCount: "infinite",
