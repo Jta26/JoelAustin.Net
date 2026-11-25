@@ -329,7 +329,7 @@ const styles = stylex.create({
     overflow: "hidden",
     paddingBlock: "0.75rem",
     paddingInline: "1rem",
-    alignItems: "start",
+    alignItems: "center",
     backgroundImage:
       "linear-gradient(90deg, rgba(115, 221, 255, .2) 0%, rgba(36, 168, 255, .1) 48%, rgba(5, 9, 20, 0) 100%)",
     borderBlockEndColor: "rgba(115, 221, 255, .38)",
@@ -360,7 +360,7 @@ const styles = stylex.create({
   headerTitleBlock: {
     gap: "0.5rem",
     alignContent: "start",
-    alignSelf: "start",
+    alignSelf: "center",
     display: "grid",
     inlineSize: "100%",
     minInlineSize: 0,
