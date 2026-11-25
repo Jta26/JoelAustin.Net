@@ -669,31 +669,28 @@ const tumbleCore = stylex.keyframes({
   },
 });
 
-const noiseTextureDataUrl = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
+const noiseTextureDataUrl = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
 const styles = stylex.create({
   ambientGlow: {
     backgroundImage:
-      "radial-gradient(circle closest-side at 50% 50%, rgba(36, 168, 255, 0.075) 0%, rgba(36, 168, 255, 0.06) 15%, rgba(62, 186, 255, 0.04) 30%, rgba(115, 221, 255, 0.022) 46%, rgba(36, 168, 255, 0.01) 62%, rgba(36, 168, 255, 0.003) 76%, rgba(36, 168, 255, 0) 90%)",
-    insetBlockEnd: 0,
-    insetBlockStart: 0,
-    insetInlineEnd: 0,
-    insetInlineStart: 0,
+      "radial-gradient(circle at 50% 50%, rgba(36, 168, 255, 0.06) 0%, rgba(36, 168, 255, 0.04) 12%, rgba(62, 186, 255, 0.022) 26%, rgba(36, 168, 255, 0.01) 42%, rgba(36, 168, 255, 0.003) 58%, rgba(36, 168, 255, 0) 76%)",
+    insetBlockEnd: "-50vmax",
+    insetBlockStart: "-50vmax",
+    insetInlineEnd: "-50vmax",
+    insetInlineStart: "-50vmax",
     pointerEvents: "none",
     position: "absolute",
   },
   ambientNoise: {
     backgroundImage: noiseTextureDataUrl,
     backgroundRepeat: "repeat",
-    backgroundSize: "180px 180px",
-    insetBlockEnd: 0,
-    insetBlockStart: 0,
-    insetInlineEnd: 0,
-    insetInlineStart: 0,
-    maskImage:
-      "radial-gradient(circle closest-side at 50% 50%, #000 0%, rgba(0, 0, 0, 0.85) 55%, rgba(0, 0, 0, 0.35) 82%, transparent 100%)",
-    mixBlendMode: "soft-light",
-    opacity: 0.14,
+    backgroundSize: "200px 200px",
+    insetBlockEnd: "-50vmax",
+    insetBlockStart: "-50vmax",
+    insetInlineEnd: "-50vmax",
+    insetInlineStart: "-50vmax",
+    opacity: 0.032,
     pointerEvents: "none",
     position: "absolute",
   },
